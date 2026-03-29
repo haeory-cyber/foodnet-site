@@ -249,8 +249,132 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
 .news-item .news-title { font-size: 0.92rem; font-weight: 700; color: var(--green-deep); margin: 4px 0; }
 .news-item .news-body { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
 
+/* ── 주권 흐름도 ── */
+.sovereignty-flow {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin: 20px 0 24px; flex-wrap: wrap;
+}
+.sov-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 14px 12px; min-width: 100px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sov-item.visible { opacity: 1; transform: translateY(0); }
+.sov-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 6px;
+  border: 2px solid var(--green-soft);
+  background: var(--green-pale);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.sov-icon:hover { transform: scale(1.15); box-shadow: 0 4px 16px rgba(45,106,79,0.3); }
+.sov-label { font-size: 0.72rem; font-weight: 700; color: var(--green-deep); text-align: center; }
+.sov-arrow { font-size: 1.2rem; color: var(--green-soft); margin: 0 2px; padding-top: 6px; }
+
+/* ── 스크롤 Reveal ── */
+.reveal-el {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-el.visible { opacity: 1; transform: translateY(0); }
+
+/* ── 카운터 애니메이션 ── */
+.counter-value {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--green-soft); line-height: 1.2;
+}
+
+/* ── 로컬푸드 2.0 카드 아이콘 ── */
+.transform-card { transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
+.transform-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.tc-icon { font-size: 2rem; margin-bottom: 6px; display: block; }
+
+/* ── 파이프라인 시각화 ── */
+.pipeline-visual {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin: 16px 0; flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--green-pale) 0%, #fff 100%);
+  border-radius: 8px; padding: 18px 14px;
+}
+.pipe-node {
+  background: var(--green-deep); color: #fff;
+  padding: 8px 14px; border-radius: 20px;
+  font-size: 0.72rem; font-weight: 600;
+  white-space: nowrap;
+}
+.pipe-arrow-v { color: var(--green-bright); font-size: 1.1rem; margin: 0 6px; }
+
+/* ── 타임라인 ── */
+.timeline {
+  position: relative; padding-left: 28px; margin: 16px 0;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+  width: 3px; background: linear-gradient(to bottom, var(--green-bright), var(--green-pale));
+  border-radius: 2px;
+}
+.tl-item {
+  position: relative; padding: 12px 0 12px 20px;
+  opacity: 0; transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.tl-item.visible { opacity: 1; transform: translateX(0); }
+.tl-item::before {
+  content: ''; position: absolute; left: -24px; top: 18px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--green-bright); border: 3px solid var(--green-pale);
+}
+.tl-date { font-size: 0.72rem; font-weight: 700; color: var(--green-bright); }
+.tl-title { font-size: 0.88rem; font-weight: 700; color: var(--green-deep); margin: 2px 0; }
+.tl-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+
+/* ── 히어로 배경 ── */
+.doc-hero {
+  background: linear-gradient(135deg, var(--green-deep) 0%, #1a3a2e 40%, var(--green-mid) 100%);
+  color: #fff; padding: 48px 56px; border-radius: 8px 8px 0 0;
+  position: relative; overflow: hidden;
+}
+.doc-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(116,198,157,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 70% at 10% 80%, rgba(64,145,108,0.1) 0%, transparent 50%);
+}
+.doc-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.doc-hero * { position: relative; z-index: 1; }
+.doc-hero .doc-title { color: #fff; }
+.doc-hero .doc-meta { color: rgba(255,255,255,0.6); }
+.doc-hero .doc-meta b { color: var(--green-soft); }
+.doc-hero .doc-quote {
+  background: rgba(255,255,255,0.08); border-left-color: var(--green-soft);
+  color: rgba(255,255,255,0.85); margin-bottom: 0;
+}
+
+.document-body { padding: 36px 56px 48px; background: #fff; border-radius: 0 0 8px 8px; }
+
+@media print {
+  .doc-hero { background: none !important; color: var(--ink) !important; padding: 0 !important; }
+  .doc-hero::before, .doc-hero::after { display: none; }
+  .doc-hero .doc-title { color: var(--green-deep) !important; }
+  .doc-hero .doc-meta { color: var(--gray) !important; }
+  .doc-hero .doc-quote { background: var(--green-pale) !important; color: var(--green-deep) !important; }
+  .document-body { padding: 0 !important; }
+  .reveal-el, .sov-item, .tl-item { opacity: 1 !important; transform: none !important; }
+}
+
 @media (max-width: 768px) {
-  .document { padding: 24px 20px; }
+  .document { padding: 0; }
+  .doc-hero { padding: 28px 20px; }
+  .document-body { padding: 24px 20px; }
   .card-container { padding: 24px 20px; }
   .transform-grid, .auto-grid, .team-columns { grid-template-columns: 1fr; }
   .plan-steps { flex-direction: column; }
@@ -260,6 +384,11 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
   .tool-grid { grid-template-columns: 1fr; }
   .member-table { font-size: 0.75rem; }
   .member-table th, .member-table td { padding: 8px 8px; }
+  .sovereignty-flow { gap: 4px; }
+  .sov-item { min-width: 70px; padding: 8px 6px; }
+  .sov-icon { width: 38px; height: 38px; font-size: 1rem; }
+  .sov-arrow { font-size: 0.9rem; }
+  .pipeline-visual { padding: 12px 8px; }
 }
 </style>
 </head>
@@ -286,25 +415,42 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
 <!-- TAB 1: 제안서 -->
 <!-- ═══════════════════════════════════════ -->
 <div id="tab-proposal" class="tab-content active">
-<div class="document">
-  <div class="doc-header">
+<div class="document" style="padding:0; overflow:hidden;">
+
+  <!-- 히어로 섹션 -->
+  <div class="doc-hero">
     <div class="doc-title">로컬푸드 2.0<br>전국 네트워크 공동 전환 제안</div>
     <div class="doc-meta">
       <span>제안자: 품앗이소비자생활협동조합 이사장 <b>김성훈</b></span>
       <span>2026년 3월 29일</span>
       <span>대상: 전국로컬푸드협동조합네트워크</span>
     </div>
+    <div class="doc-quote">
+      농산물 유통을 넘어, 데이터와 기술로 지역사회 생활 전체를 협동하자.<br>
+      우리는 이미 많은 것을 가지고 있습니다. 바로 생활과 협동의 현장입니다.<br>
+      생산자와 소비자가 이미 조직되어 있고, 지역사회 전국의 동지들이 있습니다.<br>
+      이제 그것을 엮으면 됩니다.
+    </div>
   </div>
 
-  <div class="doc-quote">
-    농산물 유통을 넘어, 데이터와 기술로 지역사회 생활 전체를 협동하자.<br>
-    우리는 이미 많은 것을 가지고 있습니다. 바로 생활과 협동의 현장입니다.<br>
-    생산자와 소비자가 이미 조직되어 있고, 지역사회 전국의 동지들이 있습니다.<br>
-    이제 그것을 엮으면 됩니다.
-  </div>
+  <div class="document-body">
 
-  <div class="section">
+  <!-- 주권 흐름도 -->
+  <div class="section reveal-el">
     <div class="section-title"><span class="section-num">1</span>비전과 미션 — 식량주권을 넘어 생활주권, 금융주권, 에너지주권, 데이터주권으로 나아가자</div>
+
+    <div class="sovereignty-flow">
+      <div class="sov-item" style="transition-delay:0.1s"><div class="sov-icon">&#x1F33E;</div><div class="sov-label">식량주권</div></div>
+      <div class="sov-arrow">&rarr;</div>
+      <div class="sov-item" style="transition-delay:0.25s"><div class="sov-icon">&#x1F3E0;</div><div class="sov-label">생활주권</div></div>
+      <div class="sov-arrow">&rarr;</div>
+      <div class="sov-item" style="transition-delay:0.4s"><div class="sov-icon">&#x1F4B0;</div><div class="sov-label">금융주권</div></div>
+      <div class="sov-arrow">&rarr;</div>
+      <div class="sov-item" style="transition-delay:0.55s"><div class="sov-icon">&#x26A1;</div><div class="sov-label">에너지주권</div></div>
+      <div class="sov-arrow">&rarr;</div>
+      <div class="sov-item" style="transition-delay:0.7s"><div class="sov-icon">&#x1F4CA;</div><div class="sov-label">데이터주권</div></div>
+    </div>
+
     <h4>로컬 데이터 소버린티</h4>
     <p>우리 조합의 매출·조합원·탄소 데이터는 외부 플랫폼이 아니라 우리 네트워크에 귀속되어야 합니다. 대기업 솔루션에 종속되면 데이터도, 의사결정도 우리 것이 아닙니다.</p>
     <h4>공공지능 딥테크</h4>
@@ -313,45 +459,56 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
     <p>로컬푸드 직매장은 먹거리 유통 거점입니다. 여기에 탄소중립, 경영 자동화, 데이터 기반 의사결정을 얹으면 지역사회 생활 인프라가 됩니다.</p>
   </div>
 
-  <div class="section">
+  <div class="section reveal-el">
     <div class="section-title"><span class="section-num">2</span>로컬푸드 2.0이란?</div>
     <p>기존 로컬푸드 직매장 모델에 4가지 전환을 더한 것입니다.</p>
     <div class="transform-grid">
       <div class="transform-card">
+        <span class="tc-icon">&#x1F3EA;</span>
         <div class="tc-label">24시간 유무인 하이브리드 매장</div>
         <p>AI가 발주·폐기·정산·출퇴근을 자동 처리. 직원 2명으로 매장 운영이 가능합니다. 사람은 조합원을 만나는 일에 집중합니다.</p>
       </div>
       <div class="transform-card">
+        <span class="tc-icon">&#x1F33F;</span>
         <div class="tc-label">탄소중립 녹색매장</div>
         <p>DEFRA 국제 기준 탄소 자동 계산. 연간 439,149kg CO2eq 저감. 탄소중립실천포인트 참여기업 신청 완료, 연 1,213만원 추가 수익 예상.</p>
       </div>
       <div class="transform-card">
+        <span class="tc-icon">&#x1F4BB;</span>
         <div class="tc-label">자체 결제·데이터 시스템</div>
         <p>외부 POS 종속 탈피. 매일 매출·품목·농가 데이터를 자동 수집·분석, 전광판과 홈페이지에 실시간 반영.</p>
       </div>
       <div class="transform-card">
+        <span class="tc-icon">&#x2699;</span>
         <div class="tc-label">매장 및 법인 업무 자동화</div>
         <p>발주(음성·텍스트), 폐기(바코드), 영수증(사진 판독), 출퇴근(QR+GPS), 지원사업 수집까지 반복 업무 16개 자동화.</p>
       </div>
     </div>
   </div>
 
-  <div class="section">
+  <div class="section reveal-el">
     <div class="section-title"><span class="section-num">3</span>품앗이에서 해 온 일</div>
     <p style="font-weight:600; color:var(--green-mid); margin-bottom:4px;">직원 2명, AI 5명. 봇 5개, 자동화 16개가 매장을 돌리고 있습니다.</p>
     <div style="margin:14px 0; font-size:0.95rem; font-weight:700; color:var(--green-deep);">AI 도입 실익: 월 30만원으로 5명분 채용 효과</div>
     <p style="font-size:0.78rem; color:var(--gray); margin-top:-8px; margin-bottom:10px; font-style:italic;">기존 인력 대체가 아니라, 미래 비전을 위해 새로운 직원을 채용한다고 가정할 경우</p>
     <div class="stats-bar">
-      <div class="stat-item"><div class="stat-value">월 30만</div><div class="stat-label">AI 운용비</div></div>
-      <div class="stat-item"><div class="stat-value">5명분</div><div class="stat-label">채용 효과</div></div>
-      <div class="stat-item"><div class="stat-value">1,500만+</div><div class="stat-label">월 인건비 절감</div></div>
-      <div class="stat-item"><div class="stat-value">50배</div><div class="stat-label">비용 효율</div></div>
+      <div class="stat-item"><div class="counter-value" data-target="30" data-prefix="월 " data-suffix="만">월 30만</div><div class="stat-label">AI 운용비</div></div>
+      <div class="stat-item"><div class="counter-value" data-target="5" data-suffix="명분">5명분</div><div class="stat-label">채용 효과</div></div>
+      <div class="stat-item"><div class="counter-value" data-target="1500" data-suffix="만+">1,500만+</div><div class="stat-label">월 인건비 절감</div></div>
+      <div class="stat-item"><div class="counter-value" data-target="50" data-suffix="배">50배</div><div class="stat-label">비용 효율</div></div>
     </div>
     <div class="auto-grid" style="margin-bottom:12px;">
       <div class="auto-item"><strong>매장·법인 자동화</strong> <span class="arrow">&rarr;</span> 2명분 (발주·폐기·영수증·출퇴근·정산)</div>
       <div class="auto-item"><strong>코딩·시스템 개발</strong> <span class="arrow">&rarr;</span> 2명분 (홈페이지·봇·데이터분석·배포)</div>
       <div class="auto-item"><strong>지원사업·신규프로젝트</strong> <span class="arrow">&rarr;</span> 1명분 (공고 수집·서류 작성·사업 추적)</div>
     </div>
+    <div class="pipeline-visual reveal-el">
+      <div class="pipe-node">&#x1F4F1; 텔레그램 입력</div><div class="pipe-arrow-v">&rarr;</div>
+      <div class="pipe-node">&#x1F916; AI 처리</div><div class="pipe-arrow-v">&rarr;</div>
+      <div class="pipe-node">&#x1F4BE; 자동 등록</div><div class="pipe-arrow-v">&rarr;</div>
+      <div class="pipe-node">&#x1F4E2; 알림 발송</div>
+    </div>
+
     <h4>매장 운영 자동화</h4>
     <div class="auto-grid">
       <div class="auto-item"><strong>발주</strong> <span class="arrow">&rarr;</span> 텔레그램에 "양파 5박스" 입력, 공급업체 퍼지매칭, 자동 등록. 음성도 가능</div>
@@ -374,7 +531,7 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
     <p style="font-size:0.82rem; color:var(--earth); font-weight:500; margin-top:8px;">이것들은 외주 개발이 아닙니다. 협동조합 현장에서 월 30만원으로 직접 만들고 쓰고 있는 것들입니다.</p>
   </div>
 
-  <div class="section">
+  <div class="section reveal-el">
     <div class="section-title"><span class="section-num">4</span>제안: 회원사별 AI 담당자 팀빌딩</div>
     <p><b>각 회원사에서 AI 담당자 1명을 선정해주십시오.</b><br>
     IT 전문가가 아니어도 됩니다. 자기 조합의 반복 업무가 뭔지 아는 사람이면 충분합니다.</p>
@@ -398,19 +555,37 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
     </div>
   </div>
 
-  <div class="section">
+  <div class="section reveal-el">
     <div class="section-title"><span class="section-num">5</span>향후 계획</div>
-    <div class="plan-steps">
-      <div class="plan-step"><div class="ps-title">공동 대시보드 구축</div><p>네트워크 소속 조합들의 매출·조합원·탄소 데이터를 한눈에 볼 수 있는 통합 대시보드.</p></div>
-      <div class="plan-step"><div class="ps-title">로컬푸드 2.0 기술 공유</div><p>검증된 도구를 공유 형태로 배포. 4월 수요조사 &rarr; 5~6월 시범 적용 &rarr; 하반기 확산.</p></div>
-      <div class="plan-step"><div class="ps-title">대정부 사업 공동 대응</div><p>사회적경제·탄소중립·디지털전환 정부 사업에 네트워크 차원 공동 신청.</p></div>
-      <div class="plan-step"><div class="ps-title">생활 전반의 협동</div><p>먹거리 유통을 넘어 여가·문화·금융 등 지역사회 생활 전반으로 확장.</p></div>
+    <div class="timeline">
+      <div class="tl-item" style="transition-delay:0.1s">
+        <div class="tl-date">2026년 4월</div>
+        <div class="tl-title">AI 활용 수요조사</div>
+        <div class="tl-desc">네트워크 소속 조합 대상 반복 업무·AI 관심도·현재 어려움 파악</div>
+      </div>
+      <div class="tl-item" style="transition-delay:0.25s">
+        <div class="tl-date">2026년 5~6월</div>
+        <div class="tl-title">시범 적용 + 공동 대시보드 구축</div>
+        <div class="tl-desc">희망 조합 3~5곳 시범 적용. 매출·조합원·탄소 데이터 통합 대시보드 개발</div>
+      </div>
+      <div class="tl-item" style="transition-delay:0.4s">
+        <div class="tl-date">2026년 하반기</div>
+        <div class="tl-title">기술 공유 + 대정부 사업 공동 대응</div>
+        <div class="tl-desc">검증된 도구 네트워크 전체 배포. 사회적경제·탄소중립·디지털전환 정부 사업 공동 신청</div>
+      </div>
+      <div class="tl-item" style="transition-delay:0.55s">
+        <div class="tl-date">2027년~</div>
+        <div class="tl-title">생활 전반의 협동</div>
+        <div class="tl-desc">먹거리 유통을 넘어 여가·문화·금융·에너지 등 지역사회 생활 전반으로 확장</div>
+      </div>
     </div>
   </div>
 
   <div class="doc-footer">
     <p>각 조합이 따로 고민할 필요 없습니다.<br>이미 돌아가고 있는 것을 나누는 것부터 시작합시다.</p>
   </div>
+
+  </div><!-- /document-body -->
 </div>
 </div>
 
@@ -832,6 +1007,32 @@ async function loadSuggestions() {
     container.innerHTML = '<p style="color:#c0392b;">불러올 수 없습니다.</p>';
   }
 }
+
+// ── Scroll Reveal ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // 카운터 애니메이션
+      entry.target.querySelectorAll('.counter-value[data-target]').forEach(el => {
+        if (el.dataset.counted) return;
+        el.dataset.counted = '1';
+        const target = parseInt(el.dataset.target);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        let current = 0;
+        const step = Math.max(1, Math.floor(target / 40));
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = prefix + current.toLocaleString() + suffix;
+        }, 30);
+      });
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal-el, .sov-item, .tl-item').forEach(el => revealObserver.observe(el));
 
 function esc(s) {
   const d = document.createElement('div');
