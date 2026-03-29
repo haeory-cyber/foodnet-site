@@ -276,6 +276,7 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
     <li><a href="#" onclick="showTab('members',this)">참여 현황</a></li>
     <li><a href="#" onclick="showTab('resources',this)">자료실</a></li>
     <li><a href="#" onclick="showTab('news',this)">소식</a></li>
+    <li><a href="#" onclick="showTab('suggest',this)" style="color:var(--green-soft);">제안하기</a></li>
   </ul>
 </nav>
 
@@ -627,6 +628,35 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
 </div>
 </div>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 7: 무엇이든 제안하세요 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-suggest" class="tab-content">
+<div class="card-container">
+  <div class="page-title">무엇이든 제안하세요</div>
+  <div class="page-desc">네트워크에 바라는 점, 아이디어, 필요한 도구, 하고 싶은 말 — 무엇이든 좋습니다.</div>
+
+  <form class="join-form" id="suggestForm" onsubmit="submitSuggest(event)">
+    <label>이름 (선택)</label>
+    <input type="text" id="s-name" placeholder="익명도 가능합니다">
+
+    <label>소속 조합 (선택)</label>
+    <input type="text" id="s-coop" placeholder="예: 품앗이소비자생활협동조합">
+
+    <label>제안 내용 *</label>
+    <textarea id="s-suggestion" required placeholder="네트워크에 바라는 점, 필요한 도구, 함께 하고 싶은 프로젝트, 어떤 이야기든 적어주세요." style="min-height:120px;"></textarea>
+
+    <button type="submit" class="join-btn" id="suggestBtn">제안 보내기</button>
+    <div class="join-msg" id="suggestMsg"></div>
+  </form>
+
+  <div style="margin-top:32px; border-top:1px solid #E0E0D8; padding-top:24px;">
+    <h4 style="margin-bottom:12px;">그동안 들어온 제안들</h4>
+    <div id="suggestList"><div class="loading">불러오는 중...</div></div>
+  </div>
+</div>
+</div>
+
 </div><!-- /main-container -->
 
 <script>
@@ -641,6 +671,7 @@ function showTab(id, el) {
   document.querySelector('.tab-links').classList.remove('open');
   window.scrollTo(0, 0);
   if (id === 'members') loadMembers();
+  if (id === 'suggest') loadSuggestions();
 }
 
 async function submitJoin(e) {
@@ -720,6 +751,71 @@ async function loadMembers() {
     container.innerHTML = html;
   } catch (err) {
     container.innerHTML = '<p style="color:#c0392b;">데이터를 불러올 수 없습니다.</p>';
+  }
+}
+
+async function submitSuggest(e) {
+  e.preventDefault();
+  const btn = document.getElementById('suggestBtn');
+  const msg = document.getElementById('suggestMsg');
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+  msg.textContent = '';
+
+  const data = {
+    name: document.getElementById('s-name').value.trim() || '익명',
+    coop_name: document.getElementById('s-coop').value.trim() || '-',
+    suggestion: document.getElementById('s-suggestion').value.trim()
+  };
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/foodnet_suggestions', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      msg.className = 'join-msg success';
+      msg.textContent = '제안이 등록되었습니다. 감사합니다!';
+      document.getElementById('suggestForm').reset();
+      loadSuggestions();
+    } else { throw new Error(); }
+  } catch (err) {
+    msg.className = 'join-msg error';
+    msg.textContent = '전송 실패. 잠시 후 다시 시도해주세요.';
+  }
+  btn.disabled = false;
+  btn.textContent = '제안 보내기';
+}
+
+async function loadSuggestions() {
+  const container = document.getElementById('suggestList');
+  container.innerHTML = '<div class="loading">불러오는 중...</div>';
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/foodnet_suggestions?select=name,coop_name,suggestion,created_at&order=created_at.desc', {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+    });
+    const items = await res.json();
+    if (items.length === 0) {
+      container.innerHTML = '<p style="color:var(--gray);">아직 제안이 없습니다. 첫 번째 제안을 남겨주세요!</p>';
+      return;
+    }
+    let html = '';
+    items.forEach(item => {
+      const date = new Date(item.created_at).toLocaleDateString('ko-KR');
+      html += '<div class="news-item">';
+      html += '<div class="news-date">' + esc(date) + ' · ' + esc(item.name) + ' (' + esc(item.coop_name) + ')</div>';
+      html += '<div class="news-body">' + esc(item.suggestion) + '</div>';
+      html += '</div>';
+    });
+    container.innerHTML = html;
+  } catch (err) {
+    container.innerHTML = '<p style="color:#c0392b;">불러올 수 없습니다.</p>';
   }
 }
 
