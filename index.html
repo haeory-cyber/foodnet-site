@@ -3,22 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로컬푸드 2.0 — 전국 네트워크 공동 전환 제안</title>
+<title>전국로컬푸드협동조합네트워크 — 로컬푸드 2.0</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-@page {
-  size: A4;
-  margin: 20mm 18mm;
-}
-
-@media print {
-  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .page-break { page-break-before: always; }
-  .no-print { display: none; }
-}
 
 :root {
   --green-deep: #1B4332;
@@ -31,9 +20,10 @@
   --ink: #1A1A18;
   --gray: #6B6B60;
   --light: #FAFAF7;
+  --white: #FEFEFE;
 }
 
-html { font-size: 15px; }
+html { font-size: 15px; scroll-behavior: smooth; }
 
 body {
   font-family: 'Noto Sans KR', -apple-system, sans-serif;
@@ -43,330 +33,259 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── TOP NAV ── */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(27,67,50,0.97);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 52px;
+}
+
+.top-nav .site-name {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700; font-size: 0.85rem;
+  color: var(--green-pale); white-space: nowrap;
+}
+
+.top-nav .tab-links {
+  display: flex; gap: 0; list-style: none;
+}
+
+.top-nav .tab-links a {
+  display: block; padding: 14px 16px;
+  color: rgba(255,255,255,0.6); text-decoration: none;
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.03em; transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.top-nav .tab-links a:hover,
+.top-nav .tab-links a.active {
+  color: var(--green-soft);
+  border-bottom-color: var(--green-soft);
+}
+
+.hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .top-nav .tab-links {
+    display: none; flex-direction: column;
+    position: absolute; top: 52px; left: 0; right: 0;
+    background: var(--green-deep);
+  }
+  .top-nav .tab-links.open { display: flex; }
+  .top-nav .tab-links a { padding: 12px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+}
+
+/* ── MAIN CONTAINER ── */
+.main-container {
+  max-width: 960px;
+  margin: 68px auto 2rem;
+  padding: 0 1rem;
+}
+
+/* ── TAB CONTENT ── */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── DOCUMENT (제안서) ── */
 .document {
-  max-width: 210mm;
-  margin: 2rem auto;
   background: #fff;
   box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   padding: 48px 56px;
+  border-radius: 8px;
 }
 
 @media print {
   body { background: #fff; }
-  .document { box-shadow: none; margin: 0; padding: 0; max-width: none; }
+  .top-nav { display: none; }
+  .document { box-shadow: none; margin: 0; padding: 20mm 18mm; max-width: none; }
+  .tab-content { display: block !important; }
+  .tab-content:not(#tab-proposal) { display: none !important; }
 }
 
-/* ── HEADER ── */
-.doc-header {
-  border-bottom: 3px solid var(--green-deep);
-  padding-bottom: 24px;
-  margin-bottom: 28px;
+/* ── COMMON CARD ── */
+.card-container {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 36px 40px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-.doc-title {
+.page-title {
   font-family: 'Noto Serif KR', serif;
-  font-size: 1.7rem;
-  font-weight: 900;
+  font-size: 1.5rem; font-weight: 900;
   color: var(--green-deep);
-  line-height: 1.3;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.doc-meta {
-  display: flex;
-  gap: 24px;
-  font-size: 0.82rem;
-  color: var(--gray);
-}
-
-.doc-meta span { display: inline-flex; align-items: center; gap: 4px; }
-
-.doc-quote {
-  background: var(--green-pale);
-  border-left: 4px solid var(--green-bright);
-  padding: 14px 20px;
-  margin: 20px 0 28px;
-  font-family: 'Noto Serif KR', serif;
-  font-size: 0.92rem;
-  font-weight: 400;
-  color: var(--green-deep);
-  line-height: 1.7;
-}
-
-/* ── SECTIONS ── */
-.section {
+.page-desc {
+  font-size: 0.85rem; color: var(--gray);
   margin-bottom: 24px;
 }
 
-.section-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: var(--green-deep);
-  border-bottom: 1.5px solid var(--green-soft);
-  padding-bottom: 6px;
-  margin-bottom: 14px;
-}
-
-.section-num {
-  display: inline-block;
-  background: var(--green-deep);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  width: 22px;
-  height: 22px;
-  line-height: 22px;
-  text-align: center;
-  border-radius: 4px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-h4 {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--green-mid);
-  margin: 12px 0 4px;
-}
-
-p {
-  font-size: 0.88rem;
-  margin-bottom: 8px;
-  text-align: justify;
-}
-
-/* ── 4가지 전환 카드 ── */
-.transform-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 12px 0 8px;
-}
-
-.transform-card {
-  background: var(--light);
-  border: 1px solid #E0E0D8;
-  border-radius: 6px;
-  padding: 12px 14px;
-}
-
-.transform-card .tc-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--green-bright);
-  margin-bottom: 4px;
-}
-
-.transform-card p {
-  font-size: 0.8rem;
-  margin-bottom: 0;
-  line-height: 1.7;
-}
-
-/* ── 실적 박스 ── */
-.stats-bar {
-  display: flex;
-  gap: 0;
-  background: var(--green-deep);
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 12px 0;
-}
-
-.stat-item {
-  flex: 1;
-  text-align: center;
-  padding: 12px 8px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-}
-
+/* ── 제안서 기존 CSS ── */
+.doc-header { border-bottom: 3px solid var(--green-deep); padding-bottom: 24px; margin-bottom: 28px; }
+.doc-title { font-family: 'Noto Serif KR', serif; font-size: 1.7rem; font-weight: 900; color: var(--green-deep); line-height: 1.3; margin-bottom: 12px; }
+.doc-meta { display: flex; gap: 24px; font-size: 0.82rem; color: var(--gray); flex-wrap: wrap; }
+.doc-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.doc-quote { background: var(--green-pale); border-left: 4px solid var(--green-bright); padding: 14px 20px; margin: 20px 0 28px; font-family: 'Noto Serif KR', serif; font-size: 0.92rem; color: var(--green-deep); line-height: 1.7; }
+.section { margin-bottom: 24px; }
+.section-title { font-family: 'Noto Serif KR', serif; font-size: 1.12rem; font-weight: 700; color: var(--green-deep); border-bottom: 1.5px solid var(--green-soft); padding-bottom: 6px; margin-bottom: 14px; }
+.section-num { display: inline-block; background: var(--green-deep); color: #fff; font-size: 0.72rem; font-weight: 700; width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 4px; margin-right: 8px; vertical-align: middle; }
+h4 { font-size: 0.92rem; font-weight: 700; color: var(--green-mid); margin: 12px 0 4px; }
+p { font-size: 0.88rem; margin-bottom: 8px; text-align: justify; }
+.transform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 8px; }
+.transform-card { background: var(--light); border: 1px solid #E0E0D8; border-radius: 6px; padding: 12px 14px; }
+.transform-card .tc-label { font-size: 0.78rem; font-weight: 700; color: var(--green-bright); margin-bottom: 4px; }
+.transform-card p { font-size: 0.8rem; margin-bottom: 0; line-height: 1.7; }
+.stats-bar { display: flex; gap: 0; background: var(--green-deep); border-radius: 6px; overflow: hidden; margin: 12px 0; }
+.stat-item { flex: 1; text-align: center; padding: 12px 8px; border-right: 1px solid rgba(255,255,255,0.1); }
 .stat-item:last-child { border-right: none; }
-
-.stat-value {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--green-soft);
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.6);
-  margin-top: 2px;
-}
-
-/* ── 자동화 목록 ── */
-.auto-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 14px;
-  margin: 8px 0;
-}
-
-.auto-item {
-  font-size: 0.82rem;
-  padding: 6px 0;
-  border-bottom: 1px dotted #E0E0D8;
-  line-height: 1.6;
-}
-
-.auto-item strong {
-  color: var(--green-mid);
-  font-size: 0.8rem;
-}
-
+.stat-value { font-family: 'Noto Serif KR', serif; font-size: 1.15rem; font-weight: 700; color: var(--green-soft); line-height: 1.2; }
+.stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin: 8px 0; }
+.auto-item { font-size: 0.82rem; padding: 6px 0; border-bottom: 1px dotted #E0E0D8; line-height: 1.6; }
+.auto-item strong { color: var(--green-mid); font-size: 0.8rem; }
 .auto-item .arrow { color: var(--green-bright); margin: 0 3px; }
+ul.data-list { list-style: none; padding: 0; margin: 6px 0; }
+ul.data-list li { font-size: 0.82rem; padding: 3px 0 3px 16px; position: relative; line-height: 1.7; }
+ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; background: var(--green-soft); border-radius: 50%; }
+.team-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.team-box { background: var(--light); border: 1px solid #E0E0D8; border-radius: 6px; padding: 14px 16px; }
+.team-box .tb-title { font-size: 0.82rem; font-weight: 700; color: var(--green-deep); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--green-pale); }
+.team-box ul { list-style: none; padding: 0; }
+.team-box li { font-size: 0.8rem; padding: 3px 0 3px 14px; position: relative; line-height: 1.6; }
+.team-box li::before { content: '>'; position: absolute; left: 0; color: var(--green-bright); font-weight: 700; font-size: 0.75rem; }
+.plan-steps { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
+.plan-step { flex: 1; min-width: 200px; background: var(--light); border: 1px solid #E0E0D8; border-top: 3px solid var(--green-bright); border-radius: 0 0 6px 6px; padding: 12px 14px; }
+.plan-step .ps-title { font-size: 0.82rem; font-weight: 700; color: var(--green-deep); margin-bottom: 6px; }
+.plan-step p { font-size: 0.78rem; margin-bottom: 0; line-height: 1.65; }
+.doc-footer { margin-top: 28px; padding-top: 20px; border-top: 2px solid var(--green-deep); text-align: center; }
+.doc-footer p { font-family: 'Noto Serif KR', serif; font-size: 0.95rem; font-weight: 600; color: var(--green-deep); text-align: center; line-height: 1.8; }
 
-/* ── 데이터 경영 ── */
-ul.data-list {
-  list-style: none;
-  padding: 0;
-  margin: 6px 0;
+/* ── 도구 카드 ── */
+.tool-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px; margin-top: 16px;
 }
-
-ul.data-list li {
-  font-size: 0.82rem;
-  padding: 3px 0 3px 16px;
-  position: relative;
-  line-height: 1.7;
+.tool-card {
+  background: var(--light); border: 1px solid #E0E0D8;
+  border-left: 4px solid var(--green-bright);
+  border-radius: 6px; padding: 16px 18px;
 }
+.tool-card .tool-name { font-weight: 700; font-size: 0.9rem; color: var(--green-deep); margin-bottom: 4px; }
+.tool-card .tool-desc { font-size: 0.8rem; color: var(--gray); line-height: 1.6; margin-bottom: 6px; }
+.tool-card .tool-tag { font-size: 0.7rem; background: var(--green-pale); color: var(--green-mid); padding: 2px 8px; border-radius: 10px; display: inline-block; }
 
-ul.data-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 11px;
-  width: 6px;
-  height: 6px;
-  background: var(--green-soft);
-  border-radius: 50%;
+/* ── 가입 폼 ── */
+.join-form { max-width: 600px; }
+.join-form label {
+  display: block; font-size: 0.85rem; font-weight: 600;
+  color: var(--green-deep); margin: 16px 0 4px;
 }
-
-/* ── 팀빌딩 ── */
-.team-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin: 10px 0;
+.join-form label:first-child { margin-top: 0; }
+.join-form input, .join-form select, .join-form textarea {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid #D0D0C8; border-radius: 6px;
+  font-family: inherit; font-size: 0.88rem;
+  background: #fff; transition: border-color 0.2s;
 }
-
-.team-box {
-  background: var(--light);
-  border: 1px solid #E0E0D8;
-  border-radius: 6px;
-  padding: 14px 16px;
+.join-form input:focus, .join-form select:focus, .join-form textarea:focus {
+  outline: none; border-color: var(--green-bright);
 }
-
-.team-box .tb-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--green-deep);
-  margin-bottom: 8px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--green-pale);
+.join-form textarea { resize: vertical; min-height: 80px; }
+.join-form .hint { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+.join-btn {
+  display: inline-block; margin-top: 20px;
+  background: var(--green-deep); color: #fff;
+  border: none; padding: 12px 36px; border-radius: 6px;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s;
 }
+.join-btn:hover { background: var(--green-mid); }
+.join-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.join-msg { margin-top: 12px; font-size: 0.88rem; font-weight: 600; }
+.join-msg.success { color: var(--green-bright); }
+.join-msg.error { color: #c0392b; }
 
-.team-box ul {
-  list-style: none;
-  padding: 0;
+/* ── 참여 현황 ── */
+.member-table {
+  width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.82rem;
 }
-
-.team-box li {
-  font-size: 0.8rem;
-  padding: 3px 0 3px 14px;
-  position: relative;
-  line-height: 1.6;
+.member-table th {
+  background: var(--green-deep); color: #fff;
+  padding: 10px 14px; text-align: left; font-weight: 600;
 }
-
-.team-box li::before {
-  content: '>';
-  position: absolute;
-  left: 0;
-  color: var(--green-bright);
-  font-weight: 700;
-  font-size: 0.75rem;
+.member-table td {
+  padding: 10px 14px; border-bottom: 1px solid #E0E0D8;
 }
+.member-table tr:hover td { background: var(--green-pale); }
+.member-count { font-size: 0.9rem; color: var(--green-mid); font-weight: 600; margin-bottom: 12px; }
+.loading { color: var(--gray); font-size: 0.85rem; padding: 20px 0; }
 
-/* ── 향후 계획 ── */
-.plan-steps {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
+/* ── 자료실 ── */
+.resource-list { margin-top: 16px; }
+.resource-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px; background: var(--light);
+  border: 1px solid #E0E0D8; border-radius: 6px;
+  margin-bottom: 10px; text-decoration: none; color: var(--ink);
+  transition: border-color 0.2s;
 }
+.resource-item:hover { border-color: var(--green-bright); }
+.resource-icon { font-size: 1.5rem; }
+.resource-info .res-title { font-weight: 600; font-size: 0.88rem; color: var(--green-deep); }
+.resource-info .res-desc { font-size: 0.78rem; color: var(--gray); }
 
-.plan-step {
-  flex: 1;
-  background: var(--light);
-  border: 1px solid #E0E0D8;
-  border-top: 3px solid var(--green-bright);
-  border-radius: 0 0 6px 6px;
-  padding: 12px 14px;
+/* ── 소식 ── */
+.news-item {
+  padding: 16px 0; border-bottom: 1px solid #E0E0D8;
 }
+.news-item .news-date { font-size: 0.75rem; color: var(--green-bright); font-weight: 600; }
+.news-item .news-title { font-size: 0.92rem; font-weight: 700; color: var(--green-deep); margin: 4px 0; }
+.news-item .news-body { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
 
-.plan-step .ps-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--green-deep);
-  margin-bottom: 6px;
-}
-
-.plan-step p {
-  font-size: 0.78rem;
-  margin-bottom: 0;
-  line-height: 1.65;
-}
-
-/* ── FOOTER QUOTE ── */
-.doc-footer {
-  margin-top: 28px;
-  padding-top: 20px;
-  border-top: 2px solid var(--green-deep);
-  text-align: center;
-}
-
-.doc-footer p {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  text-align: center;
-  line-height: 1.8;
-}
-
-/* ── PRINT BUTTON ── */
-.print-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: var(--green-deep);
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  z-index: 100;
-}
-.print-btn:hover { background: var(--green-mid); }
-
-@media (max-width: 700px) {
-  .document { padding: 24px 20px; margin: 0; }
+@media (max-width: 768px) {
+  .document { padding: 24px 20px; }
+  .card-container { padding: 24px 20px; }
   .transform-grid, .auto-grid, .team-columns { grid-template-columns: 1fr; }
   .plan-steps { flex-direction: column; }
   .stats-bar { flex-direction: column; }
   .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .doc-meta { flex-direction: column; gap: 4px; }
+  .tool-grid { grid-template-columns: 1fr; }
+  .member-table { font-size: 0.75rem; }
+  .member-table th, .member-table td { padding: 8px 8px; }
 }
 </style>
 </head>
 <body>
 
-<div class="document">
+<!-- ── TOP NAV ── -->
+<nav class="top-nav">
+  <div class="site-name">전국로컬푸드협동조합네트워크</div>
+  <button class="hamburger" onclick="document.querySelector('.tab-links').classList.toggle('open')">&#9776;</button>
+  <ul class="tab-links">
+    <li><a href="#" class="active" onclick="showTab('proposal',this)">제안서</a></li>
+    <li><a href="#" onclick="showTab('tools',this)">도구 소개</a></li>
+    <li><a href="#" onclick="showTab('join',this)">AI담당자 가입</a></li>
+    <li><a href="#" onclick="showTab('members',this)">참여 현황</a></li>
+    <li><a href="#" onclick="showTab('resources',this)">자료실</a></li>
+    <li><a href="#" onclick="showTab('news',this)">소식</a></li>
+  </ul>
+</nav>
 
-  <!-- HEADER -->
+<div class="main-container">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 1: 제안서 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-proposal" class="tab-content active">
+<div class="document">
   <div class="doc-header">
     <div class="doc-title">로컬푸드 2.0<br>전국 네트워크 공동 전환 제안</div>
     <div class="doc-meta">
@@ -383,7 +302,6 @@ ul.data-list li::before {
     이제 그것을 엮으면 됩니다.
   </div>
 
-  <!-- 1. 비전과 미션 -->
   <div class="section">
     <div class="section-title"><span class="section-num">1</span>비전과 미션 — 식량주권을 넘어 생활주권, 데이터주권으로 나아가자</div>
     <h4>로컬 데이터 소버린티</h4>
@@ -394,7 +312,6 @@ ul.data-list li::before {
     <p>로컬푸드 직매장은 먹거리 유통 거점입니다. 여기에 탄소중립, 경영 자동화, 데이터 기반 의사결정을 얹으면 지역사회 생활 인프라가 됩니다.</p>
   </div>
 
-  <!-- 2. 로컬푸드 2.0 -->
   <div class="section">
     <div class="section-title"><span class="section-num">2</span>로컬푸드 2.0이란?</div>
     <p>기존 로컬푸드 직매장 모델에 4가지 전환을 더한 것입니다.</p>
@@ -418,39 +335,22 @@ ul.data-list li::before {
     </div>
   </div>
 
-  <!-- 3. 품앗이에서 해 온 일 -->
   <div class="section">
     <div class="section-title"><span class="section-num">3</span>품앗이에서 해 온 일</div>
     <p style="font-weight:600; color:var(--green-mid); margin-bottom:4px;">직원 2명, AI 5명. 봇 5개, 자동화 16개가 매장을 돌리고 있습니다.</p>
-
     <div style="margin:14px 0; font-size:0.95rem; font-weight:700; color:var(--green-deep);">AI 도입 실익: 월 30만원으로 5명분 채용 효과</div>
     <p style="font-size:0.78rem; color:var(--gray); margin-top:-8px; margin-bottom:10px; font-style:italic;">기존 인력 대체가 아니라, 미래 비전을 위해 새로운 직원을 채용한다고 가정할 경우</p>
-
     <div class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-value">월 30만</div>
-        <div class="stat-label">AI 운용비</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">5명분</div>
-        <div class="stat-label">채용 효과</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">1,500만+</div>
-        <div class="stat-label">월 인건비 절감</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">50배</div>
-        <div class="stat-label">비용 효율</div>
-      </div>
+      <div class="stat-item"><div class="stat-value">월 30만</div><div class="stat-label">AI 운용비</div></div>
+      <div class="stat-item"><div class="stat-value">5명분</div><div class="stat-label">채용 효과</div></div>
+      <div class="stat-item"><div class="stat-value">1,500만+</div><div class="stat-label">월 인건비 절감</div></div>
+      <div class="stat-item"><div class="stat-value">50배</div><div class="stat-label">비용 효율</div></div>
     </div>
-
     <div class="auto-grid" style="margin-bottom:12px;">
       <div class="auto-item"><strong>매장·법인 자동화</strong> <span class="arrow">&rarr;</span> 2명분 (발주·폐기·영수증·출퇴근·정산)</div>
       <div class="auto-item"><strong>코딩·시스템 개발</strong> <span class="arrow">&rarr;</span> 2명분 (홈페이지·봇·데이터분석·배포)</div>
       <div class="auto-item"><strong>지원사업·신규프로젝트</strong> <span class="arrow">&rarr;</span> 1명분 (공고 수집·서류 작성·사업 추적)</div>
     </div>
-
     <h4>매장 운영 자동화</h4>
     <div class="auto-grid">
       <div class="auto-item"><strong>발주</strong> <span class="arrow">&rarr;</span> 텔레그램에 "양파 5박스" 입력, 공급업체 퍼지매칭, 자동 등록. 음성도 가능</div>
@@ -458,7 +358,6 @@ ul.data-list li::before {
       <div class="auto-item"><strong>영수증</strong> <span class="arrow">&rarr;</span> 사진 촬영, Gemini Vision 판독, 품목·단가·마진율 자동 계산</div>
       <div class="auto-item"><strong>출퇴근</strong> <span class="arrow">&rarr;</span> QR+GPS 이중검증, 급여 자동 계산, 텔레그램으로 완료</div>
     </div>
-
     <h4>데이터 기반 경영</h4>
     <ul class="data-list">
       <li>POS 데이터 매일 08:30 자동 수집·분석 (3년치)</li>
@@ -466,25 +365,18 @@ ul.data-list li::before {
       <li>단골매칭: 농가별 3회 이상 구매 조합원 자동 추출, SMS 발송</li>
       <li>지원사업 공고 매일 09:30 자동 수집, 8개 사업 동시 추적</li>
     </ul>
-
     <h4>탄소·환경</h4>
     <ul class="data-list">
       <li>탄소 저감량 439,149kg CO2eq (소나무 87,830그루 효과)</li>
       <li>탄소중립실천포인트 참여기업 신청 완료 (장바구니·개인용기·친환경제품·리필)</li>
     </ul>
-
     <p style="font-size:0.82rem; color:var(--earth); font-weight:500; margin-top:8px;">이것들은 외주 개발이 아닙니다. 협동조합 현장에서 월 30만원으로 직접 만들고 쓰고 있는 것들입니다.</p>
   </div>
 
-  <!-- PAGE BREAK for print -->
-  <div class="page-break"></div>
-
-  <!-- 4. AI 팀빌딩 -->
   <div class="section">
     <div class="section-title"><span class="section-num">4</span>제안: 회원사별 AI 담당자 팀빌딩</div>
     <p><b>각 회원사에서 AI 담당자 1명을 선정해주십시오.</b><br>
     IT 전문가가 아니어도 됩니다. 자기 조합의 반복 업무가 뭔지 아는 사람이면 충분합니다.</p>
-
     <div class="team-columns">
       <div class="team-box">
         <div class="tb-title">AI 담당자가 할 일</div>
@@ -505,38 +397,338 @@ ul.data-list li::before {
     </div>
   </div>
 
-  <!-- 5. 향후 계획 -->
   <div class="section">
     <div class="section-title"><span class="section-num">5</span>향후 계획</div>
     <div class="plan-steps">
-      <div class="plan-step">
-        <div class="ps-title">공동 대시보드 구축</div>
-        <p>네트워크 소속 조합들의 매출·조합원·탄소 데이터를 한눈에 볼 수 있는 통합 대시보드. 각 조합이 자기 데이터를 비교·분석할 수 있습니다.</p>
-      </div>
-      <div class="plan-step">
-        <div class="ps-title">로컬푸드 2.0 기술 공유</div>
-        <p>검증된 도구를 공유 형태로 배포. 4월 수요조사 &rarr; 5~6월 희망 조합 3~5곳 시범 적용 &rarr; 하반기 확산.</p>
-      </div>
-      <div class="plan-step">
-        <div class="ps-title">대정부 사업 공동 대응</div>
-        <p>사회적경제·탄소중립·디지털전환 관련 정부 사업에 네트워크 차원으로 공동 신청. 지원사업 자동 수집 시스템을 전체로 확대.</p>
-      </div>
-      <div class="plan-step">
-        <div class="ps-title">생활 전반의 협동</div>
-        <p>먹거리 유통에 머물지 않고, 여가·문화·금융 등 지역사회 생활 전반으로 협동의 영역을 확장.</p>
-      </div>
+      <div class="plan-step"><div class="ps-title">공동 대시보드 구축</div><p>네트워크 소속 조합들의 매출·조합원·탄소 데이터를 한눈에 볼 수 있는 통합 대시보드.</p></div>
+      <div class="plan-step"><div class="ps-title">로컬푸드 2.0 기술 공유</div><p>검증된 도구를 공유 형태로 배포. 4월 수요조사 &rarr; 5~6월 시범 적용 &rarr; 하반기 확산.</p></div>
+      <div class="plan-step"><div class="ps-title">대정부 사업 공동 대응</div><p>사회적경제·탄소중립·디지털전환 정부 사업에 네트워크 차원 공동 신청.</p></div>
+      <div class="plan-step"><div class="ps-title">생활 전반의 협동</div><p>먹거리 유통을 넘어 여가·문화·금융 등 지역사회 생활 전반으로 확장.</p></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="doc-footer">
-    <p>각 조합이 따로 고민할 필요 없습니다.<br>
-    이미 돌아가고 있는 것을 나누는 것부터 시작합시다.</p>
+    <p>각 조합이 따로 고민할 필요 없습니다.<br>이미 돌아가고 있는 것을 나누는 것부터 시작합시다.</p>
   </div>
-
+</div>
 </div>
 
-<button class="print-btn no-print" onclick="window.print()">인쇄 / PDF 저장</button>
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 2: 도구 소개 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-tools" class="tab-content">
+<div class="card-container">
+  <div class="page-title">AI 자동화 도구</div>
+  <div class="page-desc">품앗이생협에서 검증된 16개 자동화 도구입니다. 네트워크 회원사에 공유·지원합니다.</div>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">발주 자동화</div>
+      <div class="tool-desc">텔레그램에 "양파 5박스" 입력하면 공급업체 퍼지매칭(70%)으로 자동 등록. 음성 입력도 지원.</div>
+      <span class="tool-tag">텔레그램 봇</span> <span class="tool-tag">Gemini STT</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">폐기 자동화</div>
+      <div class="tool-desc">유통기한 지난 상품 바코드를 텔레그램으로 촬영하면 넷포스 자동 등록 + 해당 농가 알림.</div>
+      <span class="tool-tag">바코드</span> <span class="tool-tag">Selenium</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">영수증 자동화</div>
+      <div class="tool-desc">영수증 사진을 보내면 Gemini Vision이 품목·단가·수량 판독, 마진율 자동 계산.</div>
+      <span class="tool-tag">Gemini Vision</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">출퇴근 자동화</div>
+      <div class="tool-desc">QR코드 스캔 + GPS 이중검증. 매장 반경 확인, 최저임금 기준 급여 자동 계산.</div>
+      <span class="tool-tag">QR+GPS</span> <span class="tool-tag">텔레그램</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">POS 데이터 파이프라인</div>
+      <div class="tool-desc">매일 08:30 넷포스 POS에서 매출·품목·농가 데이터 자동 수집·분석. 전광판·홈페이지 갱신.</div>
+      <span class="tool-tag">자동수집</span> <span class="tool-tag">데이터분석</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">매장 TV 전광판</div>
+      <div class="tool-desc">삼성 TV URL Launcher 자동 실행. 탄소저감량·농가수·무포장 품목 실시간 표시. 7슬라이드.</div>
+      <span class="tool-tag">디스플레이</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">탄소 계산 시스템</div>
+      <div class="tool-desc">DEFRA 2021 국제 기준. 중량 기반 수송 절감 + 무포장 LCA 복합 계산. 조합원 지오코딩.</div>
+      <span class="tool-tag">ESG</span> <span class="tool-tag">DEFRA</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">탄소중립실천포인트</div>
+      <div class="tool-desc">카카오싱크 CI 수집, QR 스캔 인증, 기술원 배치 전송. 연간 예상 1,213만원 수익.</div>
+      <span class="tool-tag">PWA</span> <span class="tool-tag">카카오싱크</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">지원사업 자동 수집</div>
+      <div class="tool-desc">기업마당(bizinfo) 공고 매일 09:30 자동 수집. 협동조합·사회적경제 키워드 필터링.</div>
+      <span class="tool-tag">GitHub Actions</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">단골매칭·이음SMS</div>
+      <div class="tool-desc">농가 선택하면 3회 이상 구매한 단골 조합원 자동 추출. Solapi SMS 일괄 발송.</div>
+      <span class="tool-tag">CRM</span> <span class="tool-tag">SMS</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">배달 관리 앱</div>
+      <div class="tool-desc">배달 순서 터치 드래그 조정. Tmap·구글맵 내비 연동, 배달 완료 시 SMS 자동 발송.</div>
+      <span class="tool-tag">물류</span> <span class="tool-tag">Tmap</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">조합원말씀 시스템</div>
+      <div class="tool-desc">조합원 익명 피드백 폼 + 사무국 대시보드 실시간 확인. QR 안내물 인쇄 지원.</div>
+      <span class="tool-tag">피드백</span> <span class="tool-tag">Supabase</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">가격태그 자동 생성</div>
+      <div class="tool-desc">Supabase 상품DB에서 QR코드 포함 A4 인쇄용 가격태그 자동 생성.</div>
+      <span class="tool-tag">인쇄</span> <span class="tool-tag">QR</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">경영 프레임워크</div>
+      <div class="tool-desc">5단계 전략 체계. SWOT·BMC·STP·4P 통합. KPI 엔진으로 일매출·객단가·활성률 추적.</div>
+      <span class="tool-tag">경영전략</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">텔레그램 봇 5종</div>
+      <div class="tool-desc">지미지니(통합), 바코드폐기봇, 출퇴근봇, 발주봇, 텔레브릿지. systemd 24시간 가동.</div>
+      <span class="tool-tag">봇</span> <span class="tool-tag">systemd</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">웹 지미 (모바일 AI)</div>
+      <div class="tool-desc">jimmy.poomasi.org — 폰에서 AI경영지원실장과 실시간 대화. 이동 중 업무 지시 가능.</div>
+      <span class="tool-tag">모바일</span> <span class="tool-tag">AI챗</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 3: AI 담당자 가입 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-join" class="tab-content">
+<div class="card-container">
+  <div class="page-title">AI 담당자 가입</div>
+  <div class="page-desc">회원사별 AI 담당자로 등록해주세요. IT 전문가가 아니어도 됩니다.</div>
+
+  <form class="join-form" id="joinForm" onsubmit="submitJoin(event)">
+    <label>이름 *</label>
+    <input type="text" id="j-name" required placeholder="홍길동">
+
+    <label>지역 *</label>
+    <select id="j-region" required>
+      <option value="">선택해주세요</option>
+      <option>서울</option><option>부산</option><option>대구</option>
+      <option>인천</option><option>광주</option><option>대전</option>
+      <option>울산</option><option>세종</option><option>경기</option>
+      <option>강원</option><option>충북</option><option>충남</option>
+      <option>전북</option><option>전남</option><option>경북</option>
+      <option>경남</option><option>제주</option>
+    </select>
+
+    <label>소속 조합 *</label>
+    <input type="text" id="j-coop" required placeholder="예: 품앗이소비자생활협동조합">
+
+    <label>연락처</label>
+    <input type="text" id="j-contact" placeholder="전화번호 또는 이메일">
+
+    <label>사용 중인 AI 에이전트 스펙</label>
+    <textarea id="j-agents" placeholder="예: ChatGPT 유료, Claude 무료, Gemini 등. 없으면 '없음'"></textarea>
+    <div class="hint">현재 사용 중이거나 관심 있는 AI 도구를 적어주세요</div>
+
+    <label>AI 활용 현황</label>
+    <textarea id="j-usage" placeholder="예: 문서 작성에 ChatGPT 사용 중, 아직 업무 자동화는 못 하고 있음"></textarea>
+    <div class="hint">현재 AI를 어떻게 활용하고 있는지 간단히 적어주세요</div>
+
+    <button type="submit" class="join-btn" id="joinBtn">가입 신청</button>
+    <div class="join-msg" id="joinMsg"></div>
+  </form>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 4: 참여 현황 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-members" class="tab-content">
+<div class="card-container">
+  <div class="page-title">참여 현황</div>
+  <div class="page-desc">네트워크 AI 담당자 등록 현황입니다.</div>
+  <div class="member-count" id="memberCount"></div>
+  <div id="memberList"><div class="loading">불러오는 중...</div></div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 5: 자료실 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-resources" class="tab-content">
+<div class="card-container">
+  <div class="page-title">자료실</div>
+  <div class="page-desc">네트워크 공유 자료입니다.</div>
+  <div class="resource-list">
+    <a href="https://poomasi.org/annual_report.html" target="_blank" class="resource-item">
+      <div class="resource-icon">📊</div>
+      <div class="resource-info">
+        <div class="res-title">품앗이생협 애뉴얼 리포트 2023-2025</div>
+        <div class="res-desc">3년간 경영 성과, AI 자동화 현황, ESG 지표</div>
+      </div>
+    </a>
+    <a href="https://poomasi.org/ai-tools.html" target="_blank" class="resource-item">
+      <div class="resource-icon">🤖</div>
+      <div class="resource-info">
+        <div class="res-title">AI 도구 대시보드</div>
+        <div class="res-desc">품앗이 AI팀 현황, 스킬 목록, 호출 예시</div>
+      </div>
+    </a>
+    <a href="https://poomasi.org" target="_blank" class="resource-item">
+      <div class="resource-icon">🏠</div>
+      <div class="resource-info">
+        <div class="res-title">품앗이생협 홈페이지</div>
+        <div class="res-desc">poomasi.org — AI로 운영되는 협동조합 홈페이지</div>
+      </div>
+    </a>
+    <a href="https://carbon.poomasi.org" target="_blank" class="resource-item">
+      <div class="resource-icon">🌱</div>
+      <div class="resource-info">
+        <div class="res-title">탄소중립실천포인트 시스템</div>
+        <div class="res-desc">카카오싱크 연동 PWA, 실천 기록 및 포인트 적립</div>
+      </div>
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 6: 소식 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-news" class="tab-content">
+<div class="card-container">
+  <div class="page-title">소식</div>
+  <div class="page-desc">네트워크 공지사항 및 일정입니다.</div>
+
+  <div class="news-item">
+    <div class="news-date">2026.03.29</div>
+    <div class="news-title">전국로컬푸드협동조합네트워크 로컬푸드 2.0 제안 발표</div>
+    <div class="news-body">품앗이생협 김성훈 이사장이 전국회의에서 로컬푸드 2.0 비전과 AI 팀빌딩을 제안했습니다. 각 회원사별 AI 담당자 선정을 요청합니다.</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">2026.04 (예정)</div>
+    <div class="news-title">AI 활용 수요조사 실시</div>
+    <div class="news-body">네트워크 소속 조합 대상 AI 활용 수요조사를 실시합니다. 각 조합의 반복 업무, AI 관심도, 현재 어려움을 파악합니다.</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">매월 (예정)</div>
+    <div class="news-title">AI 담당자 정기 온라인 모임</div>
+    <div class="news-body">매월 1회 AI 담당자 온라인 모임을 진행합니다. 각 조합 활용 현황 공유, 기술 지원, Q&A.</div>
+  </div>
+</div>
+</div>
+
+</div><!-- /main-container -->
+
+<script>
+const SUPABASE_URL = 'https://tnivhcpjrhkmekcfqgdn.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_SKtfO63ApOP3DyJKu_2ypw_JK4dsdUG';
+
+function showTab(id, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (el) el.classList.add('active');
+  document.querySelector('.tab-links').classList.remove('open');
+  window.scrollTo(0, 0);
+  if (id === 'members') loadMembers();
+}
+
+async function submitJoin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('joinBtn');
+  const msg = document.getElementById('joinMsg');
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+  msg.textContent = '';
+
+  const data = {
+    name: document.getElementById('j-name').value.trim(),
+    region: document.getElementById('j-region').value,
+    coop_name: document.getElementById('j-coop').value.trim(),
+    contact: document.getElementById('j-contact').value.trim(),
+    ai_agents: document.getElementById('j-agents').value.trim(),
+    ai_usage: document.getElementById('j-usage').value.trim()
+  };
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/foodnet_members', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      msg.className = 'join-msg success';
+      msg.textContent = '가입 신청이 완료되었습니다!';
+      document.getElementById('joinForm').reset();
+    } else {
+      throw new Error('서버 오류');
+    }
+  } catch (err) {
+    msg.className = 'join-msg error';
+    msg.textContent = '전송 실패. 잠시 후 다시 시도해주세요.';
+  }
+  btn.disabled = false;
+  btn.textContent = '가입 신청';
+}
+
+async function loadMembers() {
+  const container = document.getElementById('memberList');
+  const countEl = document.getElementById('memberCount');
+  container.innerHTML = '<div class="loading">불러오는 중...</div>';
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/foodnet_members?select=name,region,coop_name,ai_agents,ai_usage,created_at&order=created_at.desc', {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      }
+    });
+    const members = await res.json();
+    countEl.textContent = '총 ' + members.length + '명 등록';
+
+    if (members.length === 0) {
+      container.innerHTML = '<p style="color:var(--gray);">아직 등록된 담당자가 없습니다. AI담당자 가입 탭에서 등록해주세요.</p>';
+      return;
+    }
+
+    let html = '<table class="member-table"><thead><tr><th>지역</th><th>소속 조합</th><th>이름</th><th>AI 에이전트</th><th>활용 현황</th></tr></thead><tbody>';
+    members.forEach(m => {
+      html += '<tr>';
+      html += '<td>' + esc(m.region) + '</td>';
+      html += '<td>' + esc(m.coop_name) + '</td>';
+      html += '<td>' + esc(m.name) + '</td>';
+      html += '<td>' + esc(m.ai_agents || '-') + '</td>';
+      html += '<td>' + esc(m.ai_usage || '-') + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    container.innerHTML = html;
+  } catch (err) {
+    container.innerHTML = '<p style="color:#c0392b;">데이터를 불러올 수 없습니다.</p>';
+  }
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+</script>
 
 </body>
 </html>
