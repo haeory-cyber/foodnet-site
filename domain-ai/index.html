@@ -534,6 +534,113 @@ section { padding: 80px 24px; }
   line-height: 1.5;
 }
 
+/* ─── 19개 회원사 명단 ─── */
+.members-section { background: var(--white); border-top: 1px solid #E0E0D8; }
+.members-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 36px;
+}
+.member-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 80px 70px;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 18px;
+  background: var(--light);
+  border-radius: 8px;
+  border-left: 3px solid var(--green-soft);
+  transition: all 0.25s ease;
+  font-size: 0.88rem;
+}
+.member-row:hover {
+  background: var(--green-pale);
+  border-left-color: var(--green-deep);
+  transform: translateX(4px);
+}
+.member-row .m-name {
+  font-weight: 700;
+  color: var(--green-deep);
+}
+.member-row .m-name .m-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--green-bright);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+}
+.member-row .m-rep { font-size: 0.82rem; color: var(--gray); }
+.member-row .m-rev {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--green-mid);
+  text-align: right;
+}
+.member-row .m-rg {
+  font-size: 0.74rem;
+  color: var(--green-bright);
+  text-align: center;
+  background: rgba(64,145,108,0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.members-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+  padding: 28px 24px;
+  background: linear-gradient(135deg, var(--green-pale), #ECFAF0);
+  border-radius: 14px;
+}
+.members-summary .ms-stat {
+  text-align: center;
+  padding: 12px;
+}
+.members-summary .ms-num {
+  display: block;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--green-deep);
+  line-height: 1.1;
+}
+.members-summary .ms-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.members-note {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--sand);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .member-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 14px 16px;
+  }
+  .member-row .m-rep, .member-row .m-rev, .member-row .m-rg { text-align: left; }
+  .member-row .m-rev { font-size: 0.86rem; }
+}
+
 /* ─── 7법인 ─── */
 .partners-section { background: var(--bg); }
 .partner-list {
@@ -756,9 +863,10 @@ footer a { color: var(--green-soft); }
     <p class="hero-sub">큰 회사들이 결제·물류·AI를 다 가져가는 시대에, 작은 동네 매장과 협동조합·사회적기업이 자기 손으로 결제 시스템과 AI를 짓는 자리. 매장이 *판매 창구*에 머물지 않고 *결제·먹거리·환경·시민이 만나는 허브*가 되는 길입니다.</p>
     <div class="hero-stats">
       <div class="hero-stat"><span class="num">25억</span><span class="label">정부지원 R&amp;D</span></div>
+      <div class="hero-stat"><span class="num">19매장</span><span class="label">전국 네트워크 회원사</span></div>
+      <div class="hero-stat"><span class="num">8광역</span><span class="label">전국 시도 분포</span></div>
+      <div class="hero-stat"><span class="num">554억</span><span class="label">네트워크 매출</span></div>
       <div class="hero-stat"><span class="num">24개월</span><span class="label">2026.7~2028.6</span></div>
-      <div class="hero-stat"><span class="num">7법인</span><span class="label">협동조합·사회적기업</span></div>
-      <div class="hero-stat"><span class="num">5개 시도</span><span class="label">대전·전남·경남·대구·경북</span></div>
     </div>
     <div class="scroll-cue">↓ 자세히 보기</div>
   </div>
@@ -952,13 +1060,14 @@ footer a { color: var(--green-soft); }
   </div>
 </section>
 
-<!-- 5개 시도 매핑 + 확산 흐름 -->
+<!-- 1년차 컨소 + 8광역 19매장 + 확산 흐름 -->
 <section class="region-section">
   <div class="container">
     <span class="section-eyebrow">사업 지역</span>
-    <h2 class="section-title">5개 시도, 모두 비수도권에서 자라납니다</h2>
-    <p class="section-lead">큰 플랫폼이 *수도권 → 지방으로 흘러내리는* 구조가 아니라, <strong>지방 자체에서 자생하는 경제의 자리</strong>가 만들어지는 결입니다.</p>
+    <h2 class="section-title">1년차 5개 시도에서 시작해 전국 8광역 19매장으로</h2>
+    <p class="section-lead">결과적으로 <strong>전국로컬푸드협동조합네트워크 19개 회원사 전체</strong>로 확산하는 사업입니다. 큰 플랫폼이 *수도권 → 지방으로 흘러내리는* 구조가 아니라, 전국 8개 광역에서 *자생하는 경제의 자리*가 동시에 자라나는 결입니다.</p>
 
+    <h3 style="font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--green-deep);margin-top:24px;margin-bottom:14px;">1년차 컨소시엄 (5개 시도 · 4개 협동조합)</h3>
     <div class="region-grid">
       <div class="region-card observe">
         <div class="rg">대전</div>
@@ -978,6 +1087,42 @@ footer a { color: var(--green-soft); }
       </div>
     </div>
 
+    <h3 style="font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--green-deep);margin-top:40px;margin-bottom:14px;">2년차 전국 확산 (8광역 19매장 · 매출 554억)</h3>
+    <div class="region-grid">
+      <div class="region-card observe">
+        <div class="rg">경상북도 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">7개 매장</span></div>
+        <div class="rl">두레장터·상주·옥천·구미·생생팜·안동·별동네</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">대구 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">5개 매장</span></div>
+        <div class="rl">농부장터·푸른평화·농부마실·안심·이종연합회</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">경상남도 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">2개 매장</span></div>
+        <div class="rl">진주우리먹거리·거창공유농업</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">충청북도 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">1개 매장</span></div>
+        <div class="rl">괴산먹거리연대</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">전라북도 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">1개 매장</span></div>
+        <div class="rl">익산로컬푸드 (네트워크 최대 매출)</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">경기 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">1개 매장</span></div>
+        <div class="rl">여주로컬푸드사회적협동조합</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">제주 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">1개 매장</span></div>
+        <div class="rl">밥상살림농업회사법인</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">대전 <span style="font-size:0.7rem;color:var(--green-bright);font-weight:500;">1개 매장</span></div>
+        <div class="rl">품앗이소비자생활협동조합 (테스트베드)</div>
+      </div>
+    </div>
+
     <div class="region-flow">
       <div class="stage">
         <span class="yr">1년차</span>
@@ -985,12 +1130,55 @@ footer a { color: var(--green-soft); }
       </div>
       <div class="stage">
         <span class="yr">2년차</span>
-        <span class="ds">전국로컬푸드협동조합네트워크 회원사 매장 약 19곳으로 확산 (2027.7~2028.6)</span>
+        <span class="ds"><strong>전국로컬푸드협동조합네트워크 회원사 19매장 전체로 확산</strong> · 8개 광역 · 매출 554억 (2027.7~2028.6)</span>
       </div>
       <div class="stage">
         <span class="yr">3년차+</span>
         <span class="ds">전국 로컬푸드 직매장 120여 곳 + 다른 협동조합·사회적기업 매장으로 자연 확산 (2028.7~)</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19개 회원사 명단 -->
+<section class="members-section">
+  <div class="container">
+    <span class="section-eyebrow">함께 자라는 매장들</span>
+    <h2 class="section-title">전국로컬푸드협동조합네트워크 19개 회원사</h2>
+    <p class="section-lead">2년차 확산의 자리에 서는 19개 협동조합·사회적기업 매장. 매출 합계 약 554억 원. 매장 한 자리에 1,670여 농가가 결합되어 있습니다.</p>
+
+    <div class="members-grid">
+      <div class="member-row"><span class="m-name">익산로컬푸드협동조합</span><span class="m-rep">오동은</span><span class="m-rev">104억</span><span class="m-rg">전북</span></div>
+      <div class="member-row"><span class="m-name">여주로컬푸드사회적협동조합</span><span class="m-rep">조장현</span><span class="m-rev">67억</span><span class="m-rg">경기</span></div>
+      <div class="member-row"><span class="m-name">진주우리먹거리협동조합 진주텃밭</span><span class="m-rep">서현진</span><span class="m-rev">62억</span><span class="m-rg">경남</span></div>
+      <div class="member-row"><span class="m-name">협동조합두레장터</span><span class="m-rep">이명순</span><span class="m-rev">52억</span><span class="m-rg">경북</span></div>
+      <div class="member-row"><span class="m-name">협동조합농부장터</span><span class="m-rep">장영환</span><span class="m-rev">39억</span><span class="m-rg">대구</span></div>
+      <div class="member-row"><span class="m-name">괴산먹거리연대사회적협동조합</span><span class="m-rep">이도훈</span><span class="m-rev">30억</span><span class="m-rg">충북</span></div>
+      <div class="member-row"><span class="m-name">상주로컬푸드협동조합</span><span class="m-rep">이상범</span><span class="m-rev">27억</span><span class="m-rg">경북</span></div>
+      <div class="member-row"><span class="m-name">옥천살림협동조합</span><span class="m-rep">한중열</span><span class="m-rev">27억</span><span class="m-rg">충북</span></div>
+      <div class="member-row"><span class="m-name">밥상살림농업회사법인</span><span class="m-rep">조상호</span><span class="m-rev">25억</span><span class="m-rg">제주</span></div>
+      <div class="member-row"><span class="m-name">거창공유농업사회적협동조합</span><span class="m-rep">김기태</span><span class="m-rev">24억</span><span class="m-rg">경남</span></div>
+      <div class="member-row"><span class="m-name">푸른평화소비자생활협동조합</span><span class="m-rep">김향숙</span><span class="m-rev">21억</span><span class="m-rg">대구</span></div>
+      <div class="member-row"><span class="m-name">품앗이소비자생활협동조합 <span class="m-tag">테스트베드</span></span><span class="m-rep">김성훈</span><span class="m-rev">20억</span><span class="m-rg">대전</span></div>
+      <div class="member-row"><span class="m-name">농부마실사회적협동조합</span><span class="m-rep">우희택</span><span class="m-rev">18억</span><span class="m-rg">대구</span></div>
+      <div class="member-row"><span class="m-name">안심협동조합</span><span class="m-rep">박인규</span><span class="m-rev">10억</span><span class="m-rg">대구</span></div>
+      <div class="member-row"><span class="m-name">구미로컬푸드협동조합</span><span class="m-rep">강상조</span><span class="m-rev">9억</span><span class="m-rg">경북</span></div>
+      <div class="member-row"><span class="m-name">생생팜영농조합</span><span class="m-rep">이승</span><span class="m-rev">8억</span><span class="m-rg">경북</span></div>
+      <div class="member-row"><span class="m-name">대구경북로컬푸드이종협동조합연합회 <span class="m-tag">네트워크 대표</span></span><span class="m-rep">김기수</span><span class="m-rev">7억</span><span class="m-rg">대구</span></div>
+      <div class="member-row"><span class="m-name">안동로컬푸드농부장터협동조합</span><span class="m-rep">이수갑</span><span class="m-rev">3억</span><span class="m-rg">경북</span></div>
+      <div class="member-row"><span class="m-name">사회적협동조합별동네공동체</span><span class="m-rep">조성용</span><span class="m-rev">1억</span><span class="m-rg">경북</span></div>
+    </div>
+
+    <div class="members-summary">
+      <div class="ms-stat"><span class="ms-num">19</span><span class="ms-label">회원 조합</span></div>
+      <div class="ms-stat"><span class="ms-num">554억</span><span class="ms-label">합산 매출</span></div>
+      <div class="ms-stat"><span class="ms-num">1,670+</span><span class="ms-label">참여 농가</span></div>
+      <div class="ms-stat"><span class="ms-num">8</span><span class="ms-label">광역 시도</span></div>
+    </div>
+
+    <div class="members-note">
+      대표: 김기수 (대구경북로컬푸드이종협동조합연합회 대표 겸임) · 회원 조합 합계 매출 554억 원 (2026-03-31 기준)<br>
+      출처: 로컬넷 조직현황 260331.xlsx · 2026-04-30 가입조직 정리본
     </div>
   </div>
 </section>
