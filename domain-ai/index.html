@@ -320,6 +320,149 @@ section { padding: 80px 24px; }
   margin-top: 4px;
 }
 
+/* ─── 130가지 달라지는 자리 ─── */
+.changes130-section { background: var(--white); border-top: 1px solid #E0E0D8; }
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 36px;
+}
+.cat-card {
+  background: var(--light);
+  border: 1px solid #E0E0D8;
+  border-radius: 10px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cat-card:hover {
+  border-color: var(--green-bright);
+  background: var(--green-pale);
+  transform: translateY(-2px);
+}
+.cat-card.open {
+  border-color: var(--green-deep);
+  background: var(--green-pale);
+}
+.cat-card .cat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.cat-card .cat-tag {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  letter-spacing: 0.08em;
+}
+.cat-card .cat-cnt {
+  font-size: 0.74rem;
+  color: var(--gray);
+  background: var(--white);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+.cat-card .cat-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.4;
+}
+.cat-card .cat-hint {
+  font-size: 0.78rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+.cat-card .cat-toggle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  margin-top: 4px;
+}
+.cat-card.open .cat-toggle::before {
+  content: '✕ 닫기';
+  color: var(--green-deep);
+}
+.cat-card:not(.open) .cat-toggle::before {
+  content: '+ 펼치기';
+}
+.cat-detail {
+  display: none;
+  margin-top: 18px;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--green-bright);
+}
+.cat-detail.show { display: block; }
+.cat-detail ol {
+  list-style: none;
+  counter-reset: ci;
+  padding: 0;
+  margin: 0;
+}
+.cat-detail li {
+  counter-increment: ci;
+  padding: 8px 0 8px 38px;
+  position: relative;
+  font-size: 0.86rem;
+  color: var(--ink);
+  line-height: 1.7;
+  border-bottom: 1px dashed #E8E8E0;
+}
+.cat-detail li:last-child { border-bottom: none; }
+.cat-detail li::before {
+  content: counter(ci, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 8px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  background: var(--green-pale);
+  width: 28px;
+  height: 22px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 22px;
+}
+.cat-detail li b { color: var(--green-deep); font-weight: 700; }
+.cat-detail li em { color: var(--gray); font-style: italic; }
+
+.changes130-summary {
+  margin-top: 36px;
+  padding: 28px 24px;
+  background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+  border-radius: 14px;
+  color: #fff;
+  text-align: center;
+}
+.changes130-summary .num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--green-soft);
+  line-height: 1.1;
+}
+.changes130-summary .lab {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.85);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .cat-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── K·L·M 환류 차트 ─── */
 .envriron { background: var(--bg); }
 .chart-wrap {
@@ -975,6 +1118,297 @@ footer a { color: var(--green-soft); }
   </div>
 </section>
 
+<!-- 130가지 변화 -->
+<section class="changes130-section">
+  <div class="container">
+    <span class="section-eyebrow">130가지 변화</span>
+    <h2 class="section-title">매장 한 자리에서 *130가지*가 달라집니다</h2>
+    <p class="section-lead">로컬푸드 2.0(매장 + 24시간 + 탄소중립 + 로컬페이) × 사회연대경제 조직 지원이 한 자리에서 만났을 때 일어나는 비포 → 애프터 변화 130가지. 13개 카테고리로 펼칩니다.</p>
+
+    <div class="changes130-summary">
+      <div class="num">130개 변화</div>
+      <div class="lab">13 카테고리 · 매장에서 시작해 농가·시민·SSE·정부·운동까지 자라나는 자리</div>
+    </div>
+
+    <div class="cat-grid">
+
+      <div class="cat-card" data-cat="A">
+        <div class="cat-head"><span class="cat-tag">A · 매장 운영</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">매장이 4축이 만나는 *허브*가 됩니다</div>
+        <div class="cat-hint">자동화 16개가 떠받치는 24h 매장 자리</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>매장이 *물건 파는 곳* → <b>4축이 만나는 허브</b> 한 자리.</li>
+            <li>영업시간 11시간(10–21시) → <b>24시간</b> 무인 결합으로 시민의 일상 곡선에 매장이 맞춰진다.</li>
+            <li>직원 수기 입력·전화 발주 → 자동화 16개가 떠받친다(POS 파이프라인·발주·폐기·영수증).</li>
+            <li>매장 사람의 손에 쌓인 암묵지가 *사람만 안다* → 위키·하네스로 <b>자산화</b>되어 다음 매장이 그 위에서 시작.</li>
+            <li>폐기 손실은 사람 눈으로만 추적 → 바코드 폐기 + 농가 자동 알림으로 <b>생산자에게 즉시 환류</b>.</li>
+            <li>발주 누락·중복 → 음성·텍스트 발주 + 퍼지매칭 70%로 <b>품목 호명 부담 사라짐</b>.</li>
+            <li>매장 직원의 단순 반복 시간 → 시민·생산자 응대 시간으로 <b>재배치</b>.</li>
+            <li>신규 매장 오픈 시 처음부터 다시 → 자동화 16개·하네스를 <b>묶음 이식</b>.</li>
+            <li>매장이 외주 솔루션에 의존 → 자체 결제망·자체 데이터 파이프라인으로 <b>외주 의존 축소</b>.</li>
+            <li>매장이 외부 평가(매출 단일 지표)로만 측정 → 4축 통합 지표(거래·SSE 입점·탄소 행동·시민 참여)로 <b>다축 평가</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="B">
+        <div class="cat-head"><span class="cat-tag">B · 농가·생산자</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">농가가 *얼굴 가진 생산자*가 됩니다</div>
+        <div class="cat-hint">단골 매칭·이탈 추론·푸드마일 자부심</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>농가 503곳이 *그냥 납품처* → 단골 매칭으로 <b>누구의 어떤 손님과 연결</b>되는지 보인다.</li>
+            <li>농가 데이터는 POS에 다 있으나 활용 못함 → 품아이가 농가별 회전·재고·이탈 패턴 <b>추론</b>.</li>
+            <li>안 팔리면 통보까지 시간 지체 → 매주 일요일 자동 단골 SMS + 패턴 변화 시 즉시 신호.</li>
+            <li>농가가 *어떤 단골이 좋아하는지* 모름 → 단골 2,386명의 구매 패턴이 <b>농가 시점에서도 보이게</b>.</li>
+            <li>단골이 1주 안 오면 그냥 잃음 → 품아이가 이탈 전조 감지 → 농가에 <em>"이분께 어떤 작물 권할까요"</em> 제안.</li>
+            <li>푸드마일리지 *직관적 설명 어려움* → 13,794건 분석 + 매장 TV 전광판에 <b>"평균 27.1km"</b> 실시간 표시.</li>
+            <li>농가 자부심이 *지역 안에서만* 머묾 → 위키 + 매장 전광판으로 시민에게 <b>얼굴이 드러남</b>.</li>
+            <li>농산물 가격이 시장 변동에 좌우 → 로컬페이 충전·정기구매로 <b>선결제 흐름</b> 가능.</li>
+            <li>농가의 친환경 인증이 *판매에 반영 안 됨* → POS 친환경 태깅 + 카카오싱크 시민 ID로 <b>인증이 매출 차이로 환원</b>.</li>
+            <li>농가 이탈 시 빈자리 채우는 시간 → 자동 데이터로 <em>어떤 작물·시기·관계가 비었는지</em> 즉시 보임.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="C">
+        <div class="cat-head"><span class="cat-tag">C · 조합원·시민</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">시민이 *자기 데이터의 주인*이 됩니다</div>
+        <div class="cat-hint">다축 흔적 누적 + 카카오싱크 통합 ID</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>조합원 20,567명 중 활성 36.3% → <b>비활성 13,103명</b>이 보이지 않는 자리에 머묾. 품아이가 깨움.</li>
+            <li>조합원이 *그냥 손님* → 결제·분리수거·다회용기·교육 출석·기부가 <b>한 ID에 누적</b>되며 주체가 됨.</li>
+            <li>참여 흔적이 결제로만 남음 → 4축 다중 흔적이 카카오싱크 CI로 <b>하나의 시민 정체성</b>으로 통합.</li>
+            <li><em>나는 조합에 무엇을 했는가</em> 자기인식 자리 없음 → 한 화면에 <b>자기 흔적 다축 누적</b> 표시.</li>
+            <li>시민이 *수동적 소비자* → 친환경 행동(분리수거·다회용기)에 <b>정부 보상</b>이 자동 적립.</li>
+            <li>조합원 가입의 의미가 *연회비* → 다축 흔적이 쌓이는 <b>결사 자격</b> 의미로 전환.</li>
+            <li>시민이 매장·SSE·지역 활동을 따로따로 → 한 ID로 묶여 <b>참여 곡선이 보임</b>.</li>
+            <li><em>내 데이터가 어디 가는지</em> 모름 → 살아있는 사람·공동체가 입력하는 사회지능으로 <b>데이터가 시민의 손에 머묾</b>.</li>
+            <li>단골이라도 *왜 단골인지* 매장이 모름 → 품아이 패턴 추론으로 <b>이유·취향·계절 변동</b>이 드러남.</li>
+            <li>시민의 *피드백*이 흩어져 사라짐 → 조합원말씀 + 위키 + 품아이 응답으로 <b>순환</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="D">
+        <div class="cat-head"><span class="cat-tag">D · 로컬페이·결제</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">결제 데이터가 *동네에 머무는* 자리</div>
+        <div class="cat-hint">한밭페이 4가지 효과 + 자체결제망</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>카드 수수료가 매출의 *약 1.5% 새어나감* → 자체 결제망(한밭페이)으로 <b>수수료 절감</b>. 카드사로 가던 자금이 매장 안에 머문다.</li>
+            <li>빅테크 페이가 *결제 데이터로 광고·금융 사업* → 로컬페이는 시민 손에 데이터를 둠.</li>
+            <li>충전식 결제로 <b>락인 효과</b> — 시민이 매장 생태계에 머무는 자리.</li>
+            <li>충전 잔액의 자연 발생 <b>낙전 수입</b> — 작은 단위가 모이면 공익으로 환류.</li>
+            <li>미사용 보유 자금이 *그냥 잠김* → 드림프로젝트·기부화폐로 <b>공익 재원</b> 흐름 만듦.</li>
+            <li>충전액의 2%가 자동 기부 → 시민이 *결제만 해도* 지역 공익에 기여.</li>
+            <li>결제 데이터가 *카드사·은행 자산* → 매장·조합원·SSE 네트워크의 <b>자산</b>.</li>
+            <li>시민이 *지역 안에서 돌리는 돈*과 *밖으로 나가는 돈*을 구분 못함 → 로컬페이로 <b>지역 내 순환</b> 가시화.</li>
+            <li>매장이 결제 인프라 외주에 종속 → 자체 결제망으로 <b>결제 주권</b> 확보.</li>
+            <li>결제 → 적립 → 기부 → 시민 환류의 <b>4단계 순환</b>이 한 매개에서 일어남.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="E">
+        <div class="cat-head"><span class="cat-tag">E · 탄소·환경</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">시민 환경 행동에 *현금 환원*</div>
+        <div class="cat-hint">탄소중립실천포인트 + 푸드마일 27km</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>매장이 다회용기·분리수거를 *자부담* → 탄소중립실천포인트 거점이 되어 <b>정부 보상</b>으로 전환.</li>
+            <li>시민의 친환경 행동이 *증명 못 받음* → 카카오싱크 CI + 5개 실천 항목으로 <b>정부 인증</b>.</li>
+            <li>푸드마일리지가 *추상 개념* → 13,794건 분석 + 매장 TV로 <b>"27.1km"</b> 즉시 보임.</li>
+            <li>탄소 라벨이 *상품 단위* → 시민의 누적 행동(개인 단위)으로 <b>자기 탄소 발자국</b> 환산.</li>
+            <li>탄소중립 정책이 *위로부터 캠페인* → 매장이 거점이 되어 <b>아래로부터 인증·보상</b>.</li>
+            <li>매장의 친환경 노력이 *외부에 안 보임* → 전광판 + 위키 + 품아이로 <b>공개 가시화</b>.</li>
+            <li>분리수거 자부심이 *순간으로 휘발* → 다축 흔적에 누적되어 <b>자기효능 자리</b> 만듦.</li>
+            <li>환경·먹거리·결제가 따로따로 → 한 매장에서 <b>동시에 만나는 자리</b>.</li>
+            <li>정부 탄소정책이 매장에 *부담만* → 보상·연계로 <b>혜택</b>으로 전환.</li>
+            <li>친환경 농가가 *가격 경쟁에서 밀림* → 시민의 인증 행동이 매출로 환원.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="F">
+        <div class="cat-head"><span class="cat-tag">F · 사회연대경제</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">SSE 입점 *11.9% → 30%·40%* 확장</div>
+        <div class="cat-hint">중간지원·교육·운동 자취 자산화</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>매장 거래처 503곳 중 SSE 입점 60곳(11.9%) → 자동 인증·시민 선택 신호로 <b>30%·40% 확장 경로</b>.</li>
+            <li>SSE 조직이 *납품 한 자리만* → 매장이 SSE 생산품의 <b>공동 진열·홍보</b> 자리.</li>
+            <li>SSE 조직 간 *서로의 거래·자원이 안 보임* → 위키·품아이가 <b>네트워크 가시화</b>.</li>
+            <li>중간지원조직(로컬브릿지·사경원)의 도메인 지식이 *문서 안에서만* → 사회지능 학습 데이터로 <b>활용</b>.</li>
+            <li>SSE 조직이 *각자 IT 외주* → 자동화·하네스 <b>공동 자산</b> 공유.</li>
+            <li>SSE 조직 거래가 *영리 시장 가격에 종속* → 로컬페이·드림프로젝트로 <b>공익 가격</b> 자리.</li>
+            <li>SSE 27년 운동의 자취가 *흩어져 보존* → 위키·자산으로 <b>공동 기억</b> 누적.</li>
+            <li>SSE 조직 협업이 *회의 단위* → 데이터·자동화 단위로 <b>일상화</b>.</li>
+            <li>SSE 교육·행사가 *별도 동선* → 매장에 출석·기부·구매로 <b>흔적 연결</b>.</li>
+            <li>SSE 조직 신규 진입이 *어려움* → 매장 자동화 묶음 이식으로 <b>진입장벽 낮춤</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="G">
+        <div class="cat-head"><span class="cat-tag">G · 데이터·AI</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">사회지능 — *살아있는 사람의* AI</div>
+        <div class="cat-hint">현장↔위키↔모델↔현장 순환</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>빅테크가 *익명 군중 데이터* → 살아있는 사람·공동체의 데이터로 <b>사회지능</b>.</li>
+            <li>데이터가 *한 방향(사용자→AI)* → 현장↔위키↔모델↔현장의 <b>순환</b>.</li>
+            <li>AI 응답이 *정적 진리* → 현장과 대화로 <b>요동치며 생성</b>.</li>
+            <li>매장 데이터가 *POS 안에서 잠김* → 자동화 파이프라인으로 <b>분석·학습 가능</b> 자산.</li>
+            <li>단골 패턴이 *직원 머리에서만* → 품아이 추론으로 <b>공동 자산</b>.</li>
+            <li>농가 회전·재고가 *수기 장부* → 실시간 데이터로 <b>즉시 의사결정</b>.</li>
+            <li>시민의 *감정·피드백*이 사라짐 → 조합원말씀·위키·품아이 응답으로 <b>남음</b>.</li>
+            <li>AI 모델이 *외부 빅테크 종속* → 오픈소스 + 상용 + 자체 자산의 <b>하이브리드</b>.</li>
+            <li>데이터 표준이 *없어 호환 안 됨* → 사회연대경제 도메인 표준을 <b>공동 제정</b>.</li>
+            <li>AI 학습 데이터가 *세금처럼 빼앗김* → 자율 입력·자율 검증의 <b>품앗이 데이터</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="H">
+        <div class="cat-head"><span class="cat-tag">H · 정부·정책</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">정책에 *새 평가축*이 그어집니다</div>
+        <div class="cat-hint">소버린AI·SSE·탄소·지역화폐 새 길</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>탄소중립실천포인트 정책이 *시민 직접 등록* → 매장이 거점이 되어 <b>참여율 폭증</b> 가능.</li>
+            <li>소버린 AI 정책이 *대형 모델 개발* 중심 → 도메인 자산·하네스 결합 모델의 <b>새 길</b> 제시.</li>
+            <li>사회적경제 정책이 *지원금 분배* 중심 → 데이터·AI 인프라 결합으로 <b>인프라 정책</b>으로 진화.</li>
+            <li>지역화폐 정책이 *발행·환급* 중심 → 데이터·결제망·공익 환류의 <b>3축</b>으로 확장.</li>
+            <li>농산물 직거래 정책이 *판로 확대* → 데이터 기반 단골·계절·이탈 분석으로 <b>질적 진화</b>.</li>
+            <li>푸드플랜·로컬푸드 정책이 *공급 측 보조* → 24시간 매장 + 시민 데이터로 <b>수요 측 견인</b>.</li>
+            <li>정부 R&D가 *결과보고서로 끝* → 위키·오픈웨이트로 <b>공공자산</b> 누적.</li>
+            <li>청년채용·일자리 정책이 *단발성* → 자동화·하네스 운영 인력의 <b>장기 일자리</b>.</li>
+            <li>데이터 거버넌스 정책 공백 → 사회연대경제 도메인의 <b>거버넌스 모델 시연</b>.</li>
+            <li>도메인특화 AI 정책 평가가 *기능·성능* → 사회 결집·확산·운동의 <b>새 평가축</b> 제시.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="I">
+        <div class="cat-head"><span class="cat-tag">I · 거버넌스·관계</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">조합원 의사결정이 *상시 거버넌스*로</div>
+        <div class="cat-hint">총회 한 번 → 일상 흔적·위키 피드백</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>조합원 의사결정이 *총회 한 번* → 일상 흔적·위키·피드백으로 <b>상시 거버넌스</b>.</li>
+            <li>조합원 *주고받기*가 결제 한 자리 → 다축 흔적의 <b>품앗이 구조</b>.</li>
+            <li><em>받기만 하는 사람</em>과 <em>주고받는 사람</em> 자리가 흐림 → 다축 흔적으로 <b>자율 자리</b> 명료.</li>
+            <li>매장 운영의 *블랙박스* → 자동화·위키로 <b>투명성</b>.</li>
+            <li>신규 조합원 진입의 의미가 *거래* → 결사·관계망 진입으로 <b>재정의</b>.</li>
+            <li>활동가의 *언어*가 운동 안에서만 통함 → 위키·품아이 매개로 <b>외부 번역</b> 가능.</li>
+            <li>매장 일상이 한 자리에서만 → 위키·품아이로 <b>다른 매장에서도 시연</b> 가능.</li>
+            <li>거버넌스 원리(주고받기·자율·결사)가 *말로만* → 데이터·자동화로 <b>실체화</b>.</li>
+            <li>매장·조합·생산자 사이의 *갈등 자리* → 데이터로 즉시 가시화되어 <b>조정 가능</b>.</li>
+            <li>운동의 자취가 *세대 단절* → 위키 누적으로 <b>세대 잇기</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="J">
+        <div class="cat-head"><span class="cat-tag">J · 운동·확산</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">운동이 *상시 결집*으로 자랍니다</div>
+        <div class="cat-hint">19매장 5법인 10만 시민 결집체</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li>매장 1곳의 시도가 *단발* → 19개 매장·5법인 컨소시엄·<b>이용자 10만명·매출 500억</b> 규모로 <b>확산 경로</b>.</li>
+            <li>SSE 운동이 *정책 의존* → 데이터·결제·AI 자산으로 <b>자립 기반</b>.</li>
+            <li>운동의 결집이 *회의·집회 단위* → 일상의 결제·분리수거·구매로 <b>상시 결집</b>.</li>
+            <li>*큰 비전*이 작은 사람에게 무력감 → 매장의 작은 승리가 <b>다음 한 발</b>로 자람.</li>
+            <li>운동의 외부 발신이 *문서·강연* → 매장 시연으로 <em>"우리도 이렇게 살래요"</em> <b>응답</b>.</li>
+            <li>데이터·지능의 *사유화 흐름* → 사회연대경제의 <b>품앗이 인프라</b>로 거꾸로 흐름.</li>
+            <li>운동이 *서구 사상 의존* → 한국 토착(한밭레츠·민들레·생협·풀무)의 <b>현재형 자리</b>.</li>
+            <li>SSE 27년 자취가 *향수* → 데이터·AI 자산으로 <b>미래 자리</b>.</li>
+            <li>운동의 다음 세대가 *진입할 자리* → 자동화·위키·품아이 운영의 <b>새 직무·새 결사</b>.</li>
+            <li>매장이 *물건 파는 곳*에서 — <b>사회를 다시 짜는 자리</b>로.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="K">
+        <div class="cat-head"><span class="cat-tag">K · 19매장 규모 효과</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">19매장 합산 *결제·환류 48~53억/년*</div>
+        <div class="cat-hint">10만·500억 가정 위에서 도출 가능 자리</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li><b>카드수수료 절감</b> — 매출 500억 × 로컬페이 침투율 30% = 결제 150억. 차이 0.5% × 150억 = <b>순 약 0.75억/년</b>.</li>
+            <li><b>락인 효과</b> — 충전 사용자 LTV 비충전 대비 1.5~2배. 매출 500억 × 30% × LTV → <b>추가 매출 연 10~15억</b>.</li>
+            <li><b>낙전수입·유보금</b> — 결제 150억 × 잔액 미사용 5% = <b>연 약 7.5억</b> 매장 네트워크 보유.</li>
+            <li><b>카카오싱크 CI 통합 ID</b> — 시민 10만이 4축 흔적을 한 사람에게 누적하는 자리가 SSE에 처음 열림.</li>
+            <li><b>정부 탄소중립실천포인트 환류</b> — 시민당 연 7만 한도. 10만 × 활용 30% × 평균 3만 = <b>연 약 30억</b> 정부 자금 시민 환류.</li>
+            <li><b>정책 평가축 재설정</b> — 500억 매출 + 10만 시민 = SSE·로컬푸드·탄소·소버린AI 정책에 새 평가축.</li>
+            <li><b>공동 운영 표준</b> — 19매장 자동화 묶음 = 한국 SSE 매장 운영 공동 표준. 신규 진입 시간·비용 대폭 감소.</li>
+            <li><b>국내 첫 대규모 도메인 데이터</b> — 시민 10만의 다축 흔적 = SSE 도메인 AI 학습의 국내 첫 자리.</li>
+            <li><b>운동의 첫 결집 가시화</b> — 5법인 + 19매장 + 10만 시민 = 사회지능 운동의 첫 가시적 결집체.</li>
+            <li><b>공익 결절점</b> — 매출 500억 + 환류 30억 + 보유 7.5억 + 락인 10~15억 + 생산성 12~13억 = 매장이 지역경제의 <b>공익 결절점</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="L">
+        <div class="cat-head"><span class="cat-tag">L · AI 생산성</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">자동화 16개 이식 → *연 12~13억*</div>
+        <div class="cat-hint">McKinsey 2~5% 보수치 + 매장당 3,500만</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li><b>인건비 절감(일 2시간 단축)</b> — 19매장 × 평균 5명 × 일 2h × 365일 × 시급 1만 = <b>연 약 6.9억</b>.</li>
+            <li><b>폐기율 감소(AI 추천 발주)</b> — 매출 500억 × 폐기 3% × AI 절감 30% = <b>연 약 4.5억</b> 손실 회복.</li>
+            <li><b>외주 솔루션비 절감</b> — POS·CRM·SMS·발주 자체화 → 매장당 500만 × 19 = <b>연 약 0.95억</b>.</li>
+            <li><b>마케팅 비용 절감</b> — 단골매칭·이음 SMS로 광고비 대체 → 매장당 200만 × 19 = <b>연 약 0.4억</b>.</li>
+            <li><b>출퇴근 자동화</b> — QR + GPS 이중검증으로 근태 정산 시간 절감, 분쟁 자리 줄임.</li>
+            <li><b>영수증 자동화</b> — Gemini Vision 마진율 자동 계산. 사람 시간 → 분석·관계 시간 재배치.</li>
+            <li><b>POS 데이터마이닝</b> — 비활성 시민 회복 시도. 이탈 방지로 매출 안정화.</li>
+            <li><b>푸드마일리지 계산</b> — 13,794건 자동 분석. 매장 TV에 27.1km 실시간 → 시민 신뢰 자산화.</li>
+            <li><b>AI 생산성 합계 (보수)</b> — 매출 500억 × 약 2.5% = <b>연 약 12~13억</b>. McKinsey 2~5% 중 보수치.</li>
+            <li><b>자동화 묶음의 자산화</b> — 신규 매장 진입 시 시간·비용 80% 단축. 19→30→40 확장 시 곱셈효과.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cat-card" data-cat="M">
+        <div class="cat-head"><span class="cat-tag">M · 사회적 가치</span><span class="cat-cnt">10개</span></div>
+        <div class="cat-title">탄소·SSE·데이터주권 *연 24~28억* + 정성</div>
+        <div class="cat-hint">돈으로 환산되는 자리 + 무형 자산</div>
+        <div class="cat-toggle"></div>
+        <div class="cat-detail">
+          <ol>
+            <li><b>탄소절감 사회적비용 (SCC)</b> — 푸드마일 27.1km vs 일반 1,000km+, 19매장 합계 연 1,000~5,000톤 CO2 절감. SCC 5만/톤 × → <b>연 약 1~5억</b> 사회적 비용 회피.</li>
+            <li><b>SSE 일자리·가구 효과</b> — SSE 매출 60억 × 임금 30% = 약 18억 임금 자리 → <b>약 30개 일자리·가구</b>.</li>
+            <li><b>시민 데이터 주권 (ARPU 차단)</b> — 메타·구글 한국 ARPU 약 5만/명. 시민 10만 × 5만 = <b>연 약 5억</b> 빅테크 광고 추출 차단.</li>
+            <li><b>로컬 순환 승수 (Local Multiplier)</b> — 락인 결제 150억 × 1.3~1.5배 재순환 = <b>추가 지역 잔류 추정 45~75억</b> (정성 강조).</li>
+            <li><b>사회지능 운동 가치</b> (정성) — 폴라니 4대 허구상품 중 *데이터·지능* 자리에 처음 응답. 운동의 다음 챕터 무형 자산.</li>
+            <li><b>시민 자부심·결사 자리</b> (정성) — 결제·분리수거·다회용기·교육·기부의 다축 흔적이 한 사람에게 누적되며 *주체*가 되는 자리.</li>
+            <li><b>농가 자부심 자리</b> (정성) — 푸드마일 27.1km 매장 TV, 단골 직접 연결, 폐기 즉시 환류로 농가가 *얼굴 가진 생산자*가 됨.</li>
+            <li><b>세대 잇기 자리</b> (정성) — 운동 자취가 위키·자동화·하네스로 누적되어 다음 세대 진입 자리. 27년 향수가 미래 자산으로.</li>
+            <li><b>정책 신뢰 자리</b> (정성) — 19매장·10만 시민·500억 + 4축 통합 데이터 = 정부·정책 입안자가 SSE 영역을 데이터로 보게 되는 자리.</li>
+            <li><b>사회적 가치 합계</b> — 정량 자리(SCC + SSE + 데이터주권) <b>연 약 24~28억</b>(승수 정성 강조 시 70~100억). 정성 자리는 운동의 척추.</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- K·L·M 환류 차트 -->
 <section class="envriron">
   <div class="container">
@@ -1381,6 +1815,16 @@ if (kmlSection) {
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     btn.parentElement.classList.toggle('open');
+  });
+});
+
+// ─── 130가지 카테고리 카드 토글 ───
+document.querySelectorAll('.cat-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('.cat-detail')) return; // 상세 안 클릭은 무시
+    card.classList.toggle('open');
+    const detail = card.querySelector('.cat-detail');
+    if (detail) detail.classList.toggle('show');
   });
 });
 </script>
