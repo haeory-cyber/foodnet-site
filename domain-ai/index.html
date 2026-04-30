@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로컬푸드 도메인 AI 사업이 만드는 변화 | foodnet.poomasi.org</title>
+<meta name="description" content="동네 매장이 어떻게 달라지나, 우리 일상에 무엇이 좋아지나. 2026년 도메인특화 AI 모델개발 사업 — 7개 협동조합·사회적기업이 함께 짓는 사회연대경제 자체 AI 「품아이」.">
+<meta property="og:title" content="로컬푸드 도메인 AI 사업이 만드는 변화">
+<meta property="og:description" content="동네 매장에 결제·자동화·환경 보상·AI를 한 자리에 묶는 사업. 2026.7~2028.6, 5개 시도 4법인 매장 → 전국 확산.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep: #1B4332;
+  --green-mid: #2D6A4F;
+  --green-bright: #40916C;
+  --green-soft: #74C69D;
+  --green-pale: #D8F3DC;
+  --earth: #6B4226;
+  --sand: #F5ECD7;
+  --ink: #1A1A18;
+  --gray: #6B6B60;
+  --light: #FAFAF7;
+  --white: #FEFEFE;
+  --bg: #E8E8E0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+html, body { font-size: 15px; }
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--green-bright); text-decoration: none; }
+a:hover { color: var(--green-deep); text-decoration: underline; }
+
+/* ─── 상단 띠 ─── */
+.topbar {
+  background: var(--green-deep);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.topbar a { color: var(--green-soft); }
+.topbar .home-link { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ─── Hero ─── */
+.hero {
+  background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+  color: #fff;
+  padding: 90px 24px 110px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(116,198,157,0.15) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 70%, rgba(64,145,108,0.18) 0%, transparent 45%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 920px; margin: 0 auto; position: relative; }
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--green-soft);
+  background: rgba(116,198,157,0.12);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.35;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+.hero h1 .highlight { color: var(--green-soft); }
+.hero-sub {
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
+  color: rgba(255,255,255,0.88);
+  max-width: 720px;
+  margin: 0 auto 36px;
+  line-height: 1.85;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 18px 12px;
+  backdrop-filter: blur(4px);
+}
+.hero-stat .num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--green-soft);
+  display: block;
+  line-height: 1.2;
+}
+.hero-stat .label {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+}
+.scroll-cue {
+  margin-top: 50px;
+  display: inline-block;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.78rem;
+  animation: bobble 2.4s ease-in-out infinite;
+}
+@keyframes bobble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ─── Section 공통 ─── */
+section { padding: 80px 24px; }
+.container { max-width: 980px; margin: 0 auto; }
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--green-bright);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.5rem, 3.6vw, 2.05rem);
+  font-weight: 900;
+  color: var(--green-deep);
+  line-height: 1.4;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+.section-lead {
+  font-size: 1.02rem;
+  color: var(--gray);
+  max-width: 700px;
+  line-height: 1.85;
+  margin-bottom: 44px;
+}
+
+/* ─── 들어가며 ─── */
+.intro {
+  background: var(--white);
+  border-bottom: 1px solid #E0E0D8;
+}
+.intro p {
+  font-size: 1.02rem;
+  margin-bottom: 22px;
+  color: var(--ink);
+}
+.intro p strong { color: var(--green-deep); font-weight: 700; }
+
+/* ─── 4축 매장 허브 다이어그램 ─── */
+.hub-section { background: var(--bg); }
+.hub-diagram {
+  position: relative;
+  max-width: 640px;
+  margin: 40px auto 0;
+  aspect-ratio: 1;
+}
+.hub-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(27,67,50,0.25);
+  z-index: 2;
+}
+.hub-center .ic { font-size: 1.8rem; margin-bottom: 4px; }
+.hub-center .lb { font-size: 1.05rem; }
+.hub-center .lb-sub { font-size: 0.72rem; color: var(--green-soft); margin-top: 2px; font-weight: 400; }
+
+.hub-axis {
+  position: absolute;
+  width: 30%;
+  background: var(--white);
+  border: 2px solid var(--green-bright);
+  border-radius: 16px;
+  padding: 14px 12px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(27,67,50,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hub-axis:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 32px rgba(27,67,50,0.15);
+  border-color: var(--green-deep);
+}
+.hub-axis .ic { font-size: 1.6rem; display: block; margin-bottom: 4px; }
+.hub-axis .nm { font-family: 'Noto Serif KR', serif; font-size: 0.95rem; font-weight: 700; color: var(--green-deep); }
+.hub-axis .ds { font-size: 0.72rem; color: var(--gray); margin-top: 4px; line-height: 1.4; }
+.axis-top { top: 0; left: 50%; transform: translateX(-50%); }
+.axis-right { top: 50%; right: 0; transform: translateY(-50%); }
+.axis-bottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+.axis-left { top: 50%; left: 0; transform: translateY(-50%); }
+.axis-top:hover { transform: translateX(-50%) scale(1.06); }
+.axis-right:hover { transform: translateY(-50%) scale(1.06); }
+.axis-bottom:hover { transform: translateX(-50%) scale(1.06); }
+.axis-left:hover { transform: translateY(-50%) scale(1.06); }
+
+.hub-line {
+  position: absolute;
+  background: linear-gradient(90deg, var(--green-soft), var(--green-bright));
+  opacity: 0.4;
+  z-index: 0;
+}
+.hub-line.h { height: 2px; left: 30%; right: 30%; top: 50%; }
+.hub-line.v { width: 2px; top: 30%; bottom: 30%; left: 50%; }
+
+@media (max-width: 600px) {
+  .hub-diagram { aspect-ratio: 0.9; }
+  .hub-center .lb { font-size: 0.88rem; }
+  .hub-center .lb-sub { font-size: 0.62rem; }
+  .hub-axis .nm { font-size: 0.78rem; }
+  .hub-axis .ds { font-size: 0.62rem; }
+}
+
+/* ─── 5가지 변화 카드 ─── */
+.changes { background: var(--white); }
+.change-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 44px;
+}
+.change-card {
+  background: var(--light);
+  border: 1px solid #E0E0D8;
+  border-radius: 14px;
+  padding: 28px 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.change-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.change-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(27,67,50,0.1);
+  border-color: var(--green-soft);
+}
+.change-card .num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 8px;
+}
+.change-card h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 14px;
+  line-height: 1.45;
+}
+.change-card p {
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.78;
+  margin-bottom: 12px;
+}
+.change-card .keypt {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  background: var(--green-pale);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+/* ─── K·L·M 환류 차트 ─── */
+.envriron { background: var(--bg); }
+.chart-wrap {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 40px 32px;
+  margin-top: 36px;
+  box-shadow: 0 4px 16px rgba(27,67,50,0.06);
+}
+.chart-total {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px dashed var(--green-soft);
+}
+.chart-total .label {
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+.chart-total .num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-weight: 900;
+  color: var(--green-deep);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.chart-total .sub {
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-top: 4px;
+}
+.bars { display: flex; flex-direction: column; gap: 22px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 80px;
+  align-items: center;
+  gap: 14px;
+}
+.bar-row .nm { font-size: 0.86rem; font-weight: 700; color: var(--green-deep); }
+.bar-track {
+  height: 18px;
+  background: var(--green-pale);
+  border-radius: 9px;
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-bright), var(--green-mid));
+  border-radius: 9px;
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.34, 0.6, 0.32, 1);
+}
+.bar-row .val {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  text-align: right;
+}
+.bar-note {
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed #E0E0D8;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .bar-row { grid-template-columns: 80px 1fr 70px; gap: 8px; }
+  .bar-row .nm { font-size: 0.78rem; }
+  .bar-row .val { font-size: 0.82rem; }
+}
+
+/* ─── 빅테크 vs 우리 AI ─── */
+.compare-section { background: var(--white); }
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 36px;
+  background: var(--light);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.compare-table th, .compare-table td {
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 0.92rem;
+  border-bottom: 1px solid #E0E0D8;
+}
+.compare-table th {
+  background: var(--green-deep);
+  color: #fff;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.compare-table th.col-feature { background: #2A2A24; }
+.compare-table td.col-feature {
+  font-weight: 700;
+  color: var(--green-deep);
+  background: var(--green-pale);
+  width: 22%;
+}
+.compare-table td.col-bigtech { color: var(--gray); width: 39%; }
+.compare-table td.col-ours { color: var(--ink); width: 39%; font-weight: 500; }
+.compare-table tr:last-child td { border-bottom: none; }
+
+@media (max-width: 700px) {
+  .compare-table th, .compare-table td { padding: 12px 10px; font-size: 0.78rem; }
+}
+
+/* ─── 5개 시도 매핑 ─── */
+.region-section { background: var(--bg); }
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+.region-card {
+  background: var(--white);
+  border: 2px solid var(--green-soft);
+  border-radius: 14px;
+  padding: 22px 20px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.region-card.in { opacity: 1; transform: translateY(0); }
+.region-card:hover {
+  border-color: var(--green-deep);
+  box-shadow: 0 12px 30px rgba(27,67,50,0.12);
+  transform: translateY(-4px);
+}
+.region-card .rg {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--green-deep);
+  margin-bottom: 8px;
+}
+.region-card .rl { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+
+.region-flow {
+  margin-top: 36px;
+  padding: 28px 24px;
+  background: var(--white);
+  border-radius: 14px;
+  border-left: 4px solid var(--green-bright);
+}
+.region-flow .stage {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.region-flow .stage:last-child { margin-bottom: 0; }
+.region-flow .yr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.86rem;
+  font-weight: 900;
+  color: var(--green-deep);
+  background: var(--green-pale);
+  padding: 6px 14px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.region-flow .ds { font-size: 0.92rem; color: var(--ink); line-height: 1.7; }
+
+/* ─── 자동화 16개 그리드 ─── */
+.auto-section { background: var(--white); }
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 36px;
+}
+.auto-cell {
+  background: var(--light);
+  border: 1px solid #E0E0D8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 0.86rem;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+.auto-cell:hover {
+  background: var(--green-pale);
+  border-color: var(--green-bright);
+  transform: translateY(-2px);
+}
+.auto-cell .no {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  display: inline-block;
+  margin-right: 6px;
+}
+.auto-cell .nm { font-weight: 700; color: var(--green-deep); }
+.auto-cell .ds {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--gray);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ─── 7법인 ─── */
+.partners-section { background: var(--bg); }
+.partner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 36px;
+}
+.partner-row {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 22px;
+  align-items: center;
+  border-left: 4px solid var(--green-bright);
+}
+.partner-row .role {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  letter-spacing: 0.04em;
+}
+.partner-row .name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 4px;
+}
+.partner-row .desc { font-size: 0.85rem; color: var(--gray); line-height: 1.65; }
+
+@media (max-width: 600px) {
+  .partner-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
+}
+
+/* ─── FAQ 아코디언 ─── */
+.faq-section { background: var(--white); }
+.faq-list { margin-top: 36px; }
+.faq-item {
+  border-bottom: 1px solid #E0E0D8;
+}
+.faq-item:first-child { border-top: 1px solid #E0E0D8; }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+.faq-q:hover { color: var(--green-bright); }
+.faq-q .ico {
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--green-bright);
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+.faq-item.open .faq-q .ico { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-a-inner {
+  padding: 0 0 22px;
+  font-size: 0.94rem;
+  color: var(--ink);
+  line-height: 1.85;
+}
+.faq-item.open .faq-a { max-height: 500px; }
+
+/* ─── 닫으며 ─── */
+.outro {
+  background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 90px 24px;
+}
+.outro h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.5rem, 3.6vw, 2rem);
+  font-weight: 900;
+  margin-bottom: 22px;
+  line-height: 1.45;
+}
+.outro p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.86);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  line-height: 1.85;
+}
+.cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.cta {
+  display: inline-block;
+  padding: 14px 26px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+.cta.primary {
+  background: var(--green-soft);
+  color: var(--green-deep);
+}
+.cta.primary:hover {
+  background: var(--green-pale);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.cta.ghost {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.cta.ghost:hover {
+  background: rgba(255,255,255,0.16);
+  text-decoration: none;
+}
+
+/* ─── 사업 개요 (footer 위 박스) ─── */
+.summary {
+  background: var(--bg);
+  padding: 64px 24px;
+}
+.summary-box {
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 40px 36px;
+  box-shadow: 0 4px 16px rgba(27,67,50,0.06);
+}
+.summary-box h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--green-deep);
+  margin-bottom: 22px;
+}
+.summary-box dl {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px 22px;
+  font-size: 0.92rem;
+}
+.summary-box dt {
+  font-weight: 700;
+  color: var(--green-mid);
+}
+.summary-box dd { color: var(--ink); }
+.summary-box .links {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px dashed #E0E0D8;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 600px) {
+  .summary-box { padding: 28px 22px; }
+  .summary-box dl { grid-template-columns: 100px 1fr; gap: 10px 14px; font-size: 0.82rem; }
+}
+
+/* ─── Footer ─── */
+footer {
+  background: var(--green-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 36px 24px;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.85;
+}
+footer .quote {
+  font-family: 'Noto Serif KR', serif;
+  font-style: italic;
+  color: var(--green-soft);
+  margin-bottom: 14px;
+}
+footer a { color: var(--green-soft); }
+
+</style>
+</head>
+<body>
+
+<!-- 상단 띠 -->
+<div class="topbar">
+  <a class="home-link" href="/">← 푸드넷 메인</a>
+  <span>2026 도메인특화 AI 모델개발 사업 · 5/7 마감</span>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">로컬푸드 도메인 AI 사업</span>
+    <h1>동네 매장이 달라집니다.<br><span class="highlight">우리 동네 결제·먹거리·환경·시민이 한 자리에서.</span></h1>
+    <p class="hero-sub">큰 회사들이 결제·물류·AI를 다 가져가는 시대에, 작은 동네 매장과 협동조합·사회적기업이 자기 손으로 결제 시스템과 AI를 짓는 자리. 매장이 *판매 창구*에 머물지 않고 *결제·먹거리·환경·시민이 만나는 허브*가 되는 길입니다.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">25억</span><span class="label">정부지원 R&amp;D</span></div>
+      <div class="hero-stat"><span class="num">24개월</span><span class="label">2026.7~2028.6</span></div>
+      <div class="hero-stat"><span class="num">7법인</span><span class="label">협동조합·사회적기업</span></div>
+      <div class="hero-stat"><span class="num">5개 시도</span><span class="label">대전·전남·경남·대구·경북</span></div>
+    </div>
+    <div class="scroll-cue">↓ 자세히 보기</div>
+  </div>
+</section>
+
+<!-- 들어가며 -->
+<section class="intro">
+  <div class="container">
+    <span class="section-eyebrow">들어가며</span>
+    <h2 class="section-title">동네 매장에 무엇이 빠져 있었나</h2>
+    <p>쇼핑은 점점 더 큰 회사들로 흘러갑니다. 쿠팡·네이버 같은 거대 플랫폼이 결제·배송·추천을 다 잡아가고, 동네 매장은 단순한 <em>판매 창구</em>가 되어 갑니다. 카드 수수료는 매출의 1.5~2%로 빠져나가고, 잔액·포인트는 본사로 흘러갑니다.</p>
+    <p>이 자리에서 한 가지 다른 길이 있습니다. <strong>로컬푸드 직매장</strong>은 30년 가까이 농가와 소비자를 직접 잇고, 푸드마일리지를 줄이고, 지역 경제로 매출이 환류되게 해 온 자리입니다. 다만 각자 작은 규모로 따로 살아남았기 때문에, 큰 플랫폼이 가진 <em>결제 시스템·자동화·AI</em> 같은 자리는 못 갖췄습니다.</p>
+    <p>본 사업은 이 자리를 메우려는 일입니다. <strong>로컬푸드 매장에 결제·자동화·환경 보상·AI를 한 자리에 묶어서</strong>, 매장이 동네 사람들의 일상에 더 깊이 들어가도록 만드는 사업입니다.</p>
+  </div>
+</section>
+
+<!-- 4축 매장 허브 -->
+<section class="hub-section">
+  <div class="container">
+    <span class="section-eyebrow">사업의 척추</span>
+    <h2 class="section-title">매장이 4축이 만나는 *허브*가 됩니다</h2>
+    <p class="section-lead">결제·공급·환경·시민이 매장 한 자리에서 통합되고, AI가 그 통합을 매개합니다. 이것이 본 사업이 짓는 <strong>로컬푸드 2.0</strong>의 구조입니다.</p>
+
+    <div class="hub-diagram">
+      <div class="hub-line h"></div>
+      <div class="hub-line v"></div>
+      <div class="hub-axis axis-top">
+        <span class="ic">💳</span>
+        <span class="nm">결제</span>
+        <span class="ds">한밭페이 자체 결제망<br>수수료 동네 머묾</span>
+      </div>
+      <div class="hub-axis axis-right">
+        <span class="ic">🥬</span>
+        <span class="nm">공급</span>
+        <span class="ds">로컬푸드·SSE 입점<br>농가 안정 소득</span>
+      </div>
+      <div class="hub-axis axis-bottom">
+        <span class="ic">🌱</span>
+        <span class="nm">환경</span>
+        <span class="ds">탄소중립실천포인트<br>무포장·재사용 환원</span>
+      </div>
+      <div class="hub-axis axis-left">
+        <span class="ic">👥</span>
+        <span class="nm">시민</span>
+        <span class="ds">통합 ID로<br>자기 데이터 주권</span>
+      </div>
+      <div class="hub-center">
+        <span class="ic">🏪</span>
+        <span class="lb">동네 매장</span>
+        <span class="lb-sub">+ AI 두뇌</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5가지 변화 -->
+<section class="changes">
+  <div class="container">
+    <span class="section-eyebrow">실체적 변화</span>
+    <h2 class="section-title">우리 동네에 무엇이 달라지나</h2>
+    <p class="section-lead">사업이 이루어지면 동네 사람·매장 직원·농가·소상공인의 일상에 다음 다섯 자리에서 변화가 일어납니다.</p>
+
+    <div class="change-grid">
+      <article class="change-card observe">
+        <span class="num">변화 01</span>
+        <h3>매장 직원이 *추천하는 사람*이 됩니다</h3>
+        <p>POS·발주·정산·라벨인쇄·고객 응대 같은 단순반복 일이 16가지 자동화 시스템에 맡겨집니다. 직원은 <strong>농가·소비자와 직접 만나는 큐레이션·기획·관계</strong>의 자리로 옮겨갑니다.</p>
+        <span class="keypt">로컬큐레이터로 자리 이동</span>
+      </article>
+
+      <article class="change-card observe">
+        <span class="num">변화 02</span>
+        <h3>카드 수수료가 동네에 머뭅니다</h3>
+        <p>카드사로 빠져나가던 매출의 1.5~2%가 한밭페이로 결제하면 0.3~0.5%로 줄어듭니다. 그 차이가 우리 동네 가게·농가·생산자에게 머무는 자리입니다.</p>
+        <span class="keypt">19매장 환산 연 7~10억</span>
+      </article>
+
+      <article class="change-card observe">
+        <span class="num">변화 03</span>
+        <h3>환경 행동에 현금 환원이 옵니다</h3>
+        <p>무포장·다회용기·재사용 같은 시민 기후행동에 환경부 탄소중립실천포인트제가 연계됩니다. 그동안 시스템 부재로 못 받았던 <strong>현금 환원</strong>이 매장 한 자리에서 돌아옵니다.</p>
+        <span class="keypt">매장당 연 1,200만 원</span>
+      </article>
+
+      <article class="change-card observe">
+        <span class="num">변화 04</span>
+        <h3>우리 데이터가 우리 것이 됩니다</h3>
+        <p>빅테크가 우리 일상을 자기 자산으로 가져가는 시대에, 본 사업은 매장·결제·환경 데이터가 <strong>우리 매장·시민·생산자에게 머물게</strong> 합니다. AI가 *우리를 위해* 일하는 자리입니다.</p>
+        <span class="keypt">분산 협동학습 구조</span>
+      </article>
+
+      <article class="change-card observe">
+        <span class="num">변화 05</span>
+        <h3>24시간 매장이 살아 있습니다</h3>
+        <p>무인 시간에도 매장이 비어 있지 않습니다. AI가 누가 들어왔는지·무엇이 비었는지·어떤 추천이 필요한지 매장 자체가 판단합니다. <strong>유무인 하이브리드 매장</strong>의 자리가 열립니다.</p>
+        <span class="keypt">로컬푸드 2.0의 본체</span>
+      </article>
+
+      <article class="change-card observe">
+        <span class="num">변화 06</span>
+        <h3>동네 농가가 안정 소득을 받습니다</h3>
+        <p>AI가 수요-공급 매칭을 도와줍니다. 어떤 농가의 어떤 채소가 어느 단골에게 잘 가는지, 어떤 작물을 언제 기획하면 좋을지 — 농가가 <em>팔리지 않을까</em> 걱정하는 자리에서 *어떻게 기획할까*의 자리로 옮겨갑니다.</p>
+        <span class="keypt">고령농 안정 소득</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- K·L·M 환류 차트 -->
+<section class="envriron">
+  <div class="container">
+    <span class="section-eyebrow">정량 효과</span>
+    <h2 class="section-title">우리 동네에 머무는 돈, 연 85~95억 원</h2>
+    <p class="section-lead">사업이 2년차에 19매장으로 확산되면 다음과 같은 환류가 만들어집니다 (보수 추정, 19매장 합산 가정).</p>
+
+    <div class="chart-wrap">
+      <div class="chart-total">
+        <div class="label">19매장 합산 연 환류 (보수 추정)</div>
+        <div class="num">연 85~95억 원</div>
+        <div class="sub">우리 동네·우리 생산자·우리 시민에게 머무는 자리</div>
+      </div>
+
+      <div class="bars" id="kml-bars">
+        <div class="bar-row">
+          <span class="nm">결제·환류</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="100"></div></div>
+          <span class="val">48~53억</span>
+        </div>
+        <div class="bar-row">
+          <span class="nm">AI 생산성</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="25"></div></div>
+          <span class="val">12~13억</span>
+        </div>
+        <div class="bar-row">
+          <span class="nm">사회적 가치</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="52"></div></div>
+          <span class="val">24~28억</span>
+        </div>
+      </div>
+
+      <div class="bar-note">
+        <strong>결제·환류</strong>: 카드수수료 절감 + 락인 LTV 1.5~2배 + 잔액 미사용 + 유보자금 활용 / <strong>AI 생산성</strong>: 매장·농가 업무 자동화 + 기획 생산성 / <strong>사회적 가치</strong>: 탄소중립실천포인트 시민 환원 + 고령농 안정 소득 + SSE 입점 동반성장
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 빅테크 vs 우리 AI -->
+<section class="compare-section">
+  <div class="container">
+    <span class="section-eyebrow">AI의 두 자리</span>
+    <h2 class="section-title">빅테크 AI와 우리 AI의 차이</h2>
+    <p class="section-lead">본 사업의 AI는 빅테크 모델과 정반대의 자리에 섭니다. 우리 말로는 <strong>사회지능</strong> — 사회 모두가 함께 키우는 AI라는 뜻입니다.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="col-feature">자리</th>
+          <th>빅테크 AI</th>
+          <th>본 사업의 AI 「품아이」</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-feature">통제</td>
+          <td class="col-bigtech">한 회사가 통제하는 거대 모델</td>
+          <td class="col-ours">동네 매장·시민·생산자가 함께 키우는 모델</td>
+        </tr>
+        <tr>
+          <td class="col-feature">학습 데이터</td>
+          <td class="col-bigtech">동의 없이 긁은 익명 군중 데이터</td>
+          <td class="col-ours">동의한 데이터만, 출처 다 추적 가능</td>
+        </tr>
+        <tr>
+          <td class="col-feature">모델 공개</td>
+          <td class="col-bigtech">비공개 (블랙박스)</td>
+          <td class="col-ours">오픈웨이트 — 누구나 가져다 쓸 수 있게</td>
+        </tr>
+        <tr>
+          <td class="col-feature">응답 방식</td>
+          <td class="col-bigtech">위에서 일방으로 줌</td>
+          <td class="col-ours">현장과 대화하며 자란다</td>
+        </tr>
+        <tr>
+          <td class="col-feature">수익 구조</td>
+          <td class="col-bigtech">광고·구독·API 과금</td>
+          <td class="col-ours">비영리. 매장·생산자 수익을 돕는다</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 5개 시도 매핑 + 확산 흐름 -->
+<section class="region-section">
+  <div class="container">
+    <span class="section-eyebrow">사업 지역</span>
+    <h2 class="section-title">5개 시도, 모두 비수도권에서 자라납니다</h2>
+    <p class="section-lead">큰 플랫폼이 *수도권 → 지방으로 흘러내리는* 구조가 아니라, <strong>지방 자체에서 자생하는 경제의 자리</strong>가 만들어지는 결입니다.</p>
+
+    <div class="region-grid">
+      <div class="region-card observe">
+        <div class="rg">대전</div>
+        <div class="rl">사경원(주관) · SI 공동주관 · 품앗이생협(테스트베드) · 지역화폐협동조합(한밭페이)</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">전라남도</div>
+        <div class="rl">사회혁신교육원사협 (햇빛마을 시민에너지 거점)</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">경상남도</div>
+        <div class="rl">진주우리먹거리협동조합 (진주)</div>
+      </div>
+      <div class="region-card observe">
+        <div class="rg">대구·경상북도</div>
+        <div class="rl">대구경북이종협동조합연합회 (전국로컬푸드네트워크 대표 겸임)</div>
+      </div>
+    </div>
+
+    <div class="region-flow">
+      <div class="stage">
+        <span class="yr">1년차</span>
+        <span class="ds">대전·전남·경남·대구·경북 5개 시도 4개 협동조합 매장에서 실증 (2026.7~2027.6)</span>
+      </div>
+      <div class="stage">
+        <span class="yr">2년차</span>
+        <span class="ds">전국로컬푸드협동조합네트워크 회원사 매장 약 19곳으로 확산 (2027.7~2028.6)</span>
+      </div>
+      <div class="stage">
+        <span class="yr">3년차+</span>
+        <span class="ds">전국 로컬푸드 직매장 120여 곳 + 다른 협동조합·사회적기업 매장으로 자연 확산 (2028.7~)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 자동화 16개 그리드 -->
+<section class="auto-section">
+  <div class="container">
+    <span class="section-eyebrow">검증된 자산</span>
+    <h2 class="section-title">자동화 16개 — 1년 넘게 살아 작동 중</h2>
+    <p class="section-lead">품앗이생협 대전 지족점·관저점에서 1년 넘게 24시간 가동되고 있는 자동화 시스템입니다. 본 사업이 이를 5개 시도 매장에 무료로 이식합니다.</p>
+
+    <div class="auto-grid">
+      <div class="auto-cell"><span class="no">01</span><span class="nm">AI 팀 체제</span><span class="ds">5명 24시간 분업, 듀얼 MCP</span></div>
+      <div class="auto-cell"><span class="no">02</span><span class="nm">POS 데이터 파이프라인</span><span class="ds">매일 08:30 자동 갱신</span></div>
+      <div class="auto-cell"><span class="no">03</span><span class="nm">매장 TV 전광판</span><span class="ds">7슬라이드, 탄소·농가 실시간</span></div>
+      <div class="auto-cell"><span class="no">04</span><span class="nm">탄소 계산</span><span class="ds">DEFRA 2021 + 13,794건 분석</span></div>
+      <div class="auto-cell"><span class="no">05</span><span class="nm">탄소중립실천포인트</span><span class="ds">4개 항목, 연 1,200만 환원</span></div>
+      <div class="auto-cell"><span class="no">06</span><span class="nm">지원사업 자동 수집</span><span class="ds">기업마당 매일 09:30</span></div>
+      <div class="auto-cell"><span class="no">07</span><span class="nm">발주 자동화</span><span class="ds">텔레그램 음성/텍스트, 퍼지매칭</span></div>
+      <div class="auto-cell"><span class="no">08</span><span class="nm">폐기 자동화</span><span class="ds">바코드 → 농가 알림</span></div>
+      <div class="auto-cell"><span class="no">09</span><span class="nm">영수증 자동화</span><span class="ds">Gemini Vision 판독</span></div>
+      <div class="auto-cell"><span class="no">10</span><span class="nm">웹 지미</span><span class="ds">폰에서 AI와 대화</span></div>
+      <div class="auto-cell"><span class="no">11</span><span class="nm">출퇴근 자동화</span><span class="ds">QR + GPS 이중 검증</span></div>
+      <div class="auto-cell"><span class="no">12</span><span class="nm">배달 관리 앱</span><span class="ds">Tmap + SMS 자동 발송</span></div>
+      <div class="auto-cell"><span class="no">13</span><span class="nm">경영 프레임워크</span><span class="ds">5단계 KPI 엔진</span></div>
+      <div class="auto-cell"><span class="no">14</span><span class="nm">POS 데이터 마이닝</span><span class="ds">3년치, 활성화율 분석</span></div>
+      <div class="auto-cell"><span class="no">15</span><span class="nm">단골매칭 SMS</span><span class="ds">농가 → 단골 자동 알림</span></div>
+      <div class="auto-cell"><span class="no">16</span><span class="nm">조합원말씀 · 가격태그</span><span class="ds">익명 피드백 + QR 인쇄</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7법인 -->
+<section class="partners-section">
+  <div class="container">
+    <span class="section-eyebrow">함께 만드는 사람들</span>
+    <h2 class="section-title">7개 협동조합·사회적기업이 같이 짓습니다</h2>
+    <p class="section-lead">한 회사의 사업이 아닙니다. 사회연대경제 진영의 7법인이 자기 자리에서 함께 짓는 일입니다.</p>
+
+    <div class="partner-list">
+      <div class="partner-row">
+        <span class="role">주관</span>
+        <div>
+          <div class="name">로컬브릿지 사회경제연구원 사회적협동조합</div>
+          <div class="desc">사회연대경제 정책·연구 거점 (대전). 2019년 산업자원부 「블록체인 기반 호혜거래시스템 개발」 R&amp;D 주관 — 한밭페이 결제망 구축 자리. 본 사업은 6년 만에 같은 결합이 *AI 도메인*에서 다시 모이는 자리.</div>
+        </div>
+      </div>
+      <div class="partner-row">
+        <span class="role">공동주관 (SI)</span>
+        <div>
+          <div class="name">위즈온협동조합 또는 봄소프트</div>
+          <div class="desc">대전 IT 사회적기업. AI 모델 개발·기술 구현·데이터 파이프라인 자리.</div>
+        </div>
+      </div>
+      <div class="partner-row">
+        <span class="role">공동주관</span>
+        <div>
+          <div class="name">사회혁신교육원 사회적협동조합</div>
+          <div class="desc">햇빛소득마을·시민에너지·교육 거점. 2026년 중 주소재지를 대전 → 전남으로 이전 예정.</div>
+        </div>
+      </div>
+      <div class="partner-row">
+        <span class="role">테스트베드</span>
+        <div>
+          <div class="name">품앗이소비자생활협동조합</div>
+          <div class="desc">대전 지족·관저 매장 (자동화 16개 정본 1년+ 가동). 1년차 핵심 실증 매장.</div>
+        </div>
+      </div>
+      <div class="partner-row">
+        <span class="role">수요기업</span>
+        <div>
+          <div class="name">대구경북이종협동조합연합회</div>
+          <div class="desc">김기수 회장 (전국로컬푸드협동조합네트워크 대표 겸임). 1년차 대구·경북 매장 + 2년차 네트워크 전매장 자연 연결 자리.</div>
+        </div>
+      </div>
+      <div class="partner-row">
+        <span class="role">수요기업</span>
+        <div>
+          <div class="name">진주우리먹거리협동조합</div>
+          <div class="desc">경상남도 진주 매장. 비수도권 확산 거점.</div>
+        </div>
+      </div>
+      <div class="partner-row">
+        <span class="role">수요기업</span>
+        <div>
+          <div class="name">지역화폐협동조합</div>
+          <div class="desc">한밭페이 자체 결제망 운영. 한밭레츠 27년 회원 네트워크 결합. 결제 인프라 4법인 매장 + 입점 SSE 조직 연동 자리.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <span class="section-eyebrow">자주 묻는 질문</span>
+    <h2 class="section-title">궁금하신 자리</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">사업이 끝나면 다시 빅테크에 돌아가야 하나요? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">아닙니다. AI 모델·결제 시스템·자동화 도구·위키 인프라는 사업 종료 후에도 7개 협동조합·사회적기업이 함께 운영합니다. 한밭페이 결제망은 이미 6년 넘게 운영되어 왔고, 본 사업이 그 자리를 전국 단위로 확장합니다.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">우리 동네는 1년차 매장이 아닌데요? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">1년차에는 4개 협동조합 매장(대전·전남·경남·대구·경북)에서 실증합니다. 2년차에 전국로컬푸드협동조합네트워크 회원사 매장 약 19곳으로 확산되고, 3년차 이후 전국 로컬푸드 직매장 120여 곳 + 다른 협동조합·사회적기업 매장으로 자연 확산됩니다.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">AI가 사람 일자리를 뺏는 거 아닌가요? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">본 사업의 AI는 *단순반복 일*을 자동화합니다. 그 결과 직원이 *기획·큐레이션·관계*라는 본업으로 자리를 옮깁니다. 일자리가 줄어드는 자리가 아니라, 일자리가 사람다워지는 자리입니다. 본 사업도 청년 정규직 5명을 의무 채용합니다.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">데이터를 정말 안전하게 지킬 수 있나요? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">분산 협동학습 방식으로 — 각 협동조합의 데이터가 *자기 자리에서 떠나지 않습니다*. 모델 학습에 필요한 부분만 교환되고, 원본 데이터는 외부로 이동하지 않습니다. 이 방식은 스페인 몬드라곤 협동조합이 이미 검증한 모델입니다.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">일반 시민도 참여할 수 있나요? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">매장에서 한밭페이로 결제하시고, 무포장·다회용기로 사시고, 협동조합 매장에서 동네 채소를 사 가시는 일 — 그 자체가 사회지능을 함께 키우는 자리입니다. 본 사업의 AI는 시민의 그런 행동에서 자라납니다.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 닫으며 / CTA -->
+<section class="outro">
+  <div class="container">
+    <h2>같이 가실 분이라면,<br>우리 동네 매장에서 한 번 만나보십시오.</h2>
+    <p>24개월 사업 통과는 시작일 뿐입니다. 통과되면 더 빠르게 가고, 떨어져도 길은 갑니다. 우리가 30년 동안 살아온 자리에서 한 걸음 더 나아가는 일이고, 동네 매장에서 시민의 일상이 자라나는 일입니다.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="https://wiki.poomasi.org/사업/로컬푸드-도메인-AI-사업이-만드는-변화">시민 안내 자세히 보기</a>
+      <a class="cta ghost" href="https://wiki.poomasi.org/정체성/사회지능_제안서">사회지능 제안서 읽기</a>
+    </div>
+  </div>
+</section>
+
+<!-- 사업 개요 -->
+<section class="summary">
+  <div class="summary-box">
+    <h2>본 사업 개요</h2>
+    <dl>
+      <dt>사업명</dt><dd>사회연대경제 도메인특화 AI 모델 「품아이」 개발 — 로컬푸드 2.0 4축 매장 허브 통합 실증</dd>
+      <dt>공모</dt><dd>2026년 도메인특화 AI 모델개발 사업 (중기부 제2026-212호)</dd>
+      <dt>기간</dt><dd>2026.7 ~ 2028.6 (24개월)</dd>
+      <dt>예산</dt><dd>정부지원 25억 원 (75%) + 기관부담 8.34억 원 (25%)</dd>
+      <dt>주관</dt><dd>로컬브릿지 사회경제연구원 사회적협동조합</dd>
+      <dt>사업지역</dt><dd>대전·전남·경남·대구·경북 5개 시도 (1년차) → 전국 (2~3년차)</dd>
+      <dt>모델 공개</dt><dd>오픈웨이트 + 모델카드 + 데이터카드 + 「한국 사회연대경제 AI 백서」 동시 공개</dd>
+    </dl>
+    <div class="links">
+      <a href="https://wiki.poomasi.org/사업/로컬푸드-도메인-AI-본문1-v2">→ 본문1 (정부 평가용)</a>
+      <a href="https://wiki.poomasi.org/사업/로컬푸드-도메인-AI-공동사업-제안서">→ 공동사업 제안서</a>
+      <a href="https://wiki.poomasi.org/사업/로컬푸드-도메인-AI-공동사업-동지-안내">→ 동지 안내본</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="quote">"통과되면 빨라지고 떨어져도 길은 갑니다."</div>
+  <div>2026년 4월 30일 · 책임 김성훈 (품앗이생활협동조합 / 지역화폐협동조합 이사장)</div>
+  <div style="margin-top:8px;">전국로컬푸드협동조합네트워크 · <a href="https://foodnet.poomasi.org">foodnet.poomasi.org</a></div>
+</footer>
+
+<script>
+// ─── Intersection Observer로 카드 reveal ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      // K·L·M 차트의 막대도 함께 채움
+      if (entry.target.id === 'kml-bars' || entry.target.closest('#kml-bars')) {
+        const fills = entry.target.querySelectorAll ? entry.target.querySelectorAll('.bar-fill') : [];
+        fills.forEach(f => { f.style.width = f.dataset.pct + '%'; });
+      }
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.observe, .change-card, .region-card').forEach(el => observer.observe(el));
+
+// K·L·M 차트 막대 별도 관찰
+const kmlSection = document.getElementById('kml-bars');
+if (kmlSection) {
+  const kmlObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        kmlSection.querySelectorAll('.bar-fill').forEach(f => {
+          f.style.width = f.dataset.pct + '%';
+        });
+        kmlObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  kmlObs.observe(kmlSection);
+}
+
+// ─── FAQ 아코디언 ───
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>
