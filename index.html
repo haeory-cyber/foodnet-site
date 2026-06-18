@@ -227,6 +227,70 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
 .member-count { font-size: 0.9rem; color: var(--green-mid); font-weight: 600; margin-bottom: 12px; }
 .loading { color: var(--gray); font-size: 0.85rem; padding: 20px 0; }
 
+/* ── 지원사업 탭 ── */
+.grant-list { margin-top: 8px; }
+.grant-card {
+  background: var(--white);
+  border: 1px solid #D4E9D9;
+  border-left: 4px solid var(--green-bright);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.grant-card:hover { box-shadow: 0 2px 10px rgba(27,67,50,0.10); border-color: var(--green-mid); }
+.grant-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.5; }
+.grant-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--gray); }
+.grant-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 10px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
+}
+.grant-badge-central {
+  background: var(--green-pale); color: var(--green-deep);
+}
+.grant-badge-local {
+  background: #E8F4EC; color: var(--green-mid);
+}
+.grant-link {
+  display: inline-block; margin-top: 8px;
+  font-size: 0.8rem; color: var(--green-bright);
+  text-decoration: none; font-weight: 500;
+}
+.grant-link:hover { color: var(--green-deep); text-decoration: underline; }
+
+/* ── 더보기 버튼 ── */
+#loadMoreBtn {
+  display: block; margin: 18px auto 0;
+  background: var(--green-bright); color: #fff;
+  border: none; border-radius: 6px;
+  padding: 10px 28px; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: background 0.2s;
+}
+#loadMoreBtn:hover { background: var(--green-deep); }
+#loadMoreBtn:disabled { background: var(--gray); cursor: default; }
+
+/* ── 제보 카드 배지 ── */
+.grant-badge-tip {
+  background: #FFF3CD; color: #856404;
+}
+.grant-tip-section-title {
+  font-size: 1rem; font-weight: 700; color: var(--green-deep);
+  margin: 32px 0 12px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--green-pale);
+}
+/* 제보 폼 */
+.tip-form-wrap {
+  background: var(--green-pale); border-radius: 10px;
+  padding: 20px 22px; margin-top: 32px;
+}
+.tip-form-wrap .form-title {
+  font-size: 0.97rem; font-weight: 700; color: var(--green-deep);
+  margin-bottom: 4px;
+}
+.tip-form-wrap .form-desc {
+  font-size: 0.82rem; color: var(--green-mid); margin-bottom: 16px;
+}
+
 /* ── 자료실 ── */
 .resource-list { margin-top: 16px; }
 .resource-item {
@@ -595,6 +659,7 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
     <li><a href="#" onclick="showTab('tools',this)">도구 소개</a></li>
     <li><a href="#" onclick="showTab('join',this)">AI담당자 가입</a></li>
     <li><a href="#" onclick="showTab('members',this)">참여 현황</a></li>
+    <li><a href="#" onclick="showTab('grants',this)">지원사업</a></li>
     <li><a href="#" onclick="showTab('resources',this)">자료실</a></li>
     <li><a href="#" onclick="showTab('news',this)">소식</a></li>
     <li><a href="#" onclick="showTab('suggest',this)" style="color:var(--green-soft);">제안하기</a></li>
@@ -1061,7 +1126,58 @@ ul.data-list li::before { content: ''; position: absolute; left: 0; top: 11px; w
 </div>
 
 <!-- ═══════════════════════════════════════ -->
-<!-- TAB 5: 자료실 -->
+<!-- TAB 5: 전국 지원사업 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-grants" class="tab-content">
+<div class="card-container">
+  <div class="page-title">전국 지원사업</div>
+  <div class="page-desc">기업마당(bizinfo.go.kr)에서 자동 수집한 전국 지원사업 공고입니다. 중앙부처·전 지자체 전체를 지역 구분 없이 보여줍니다.</div>
+  <div class="member-count" id="grantCount"></div>
+  <div id="grantList"><div class="loading">불러오는 중...</div></div>
+  <button id="loadMoreBtn" style="display:none;" onclick="loadMoreGrants()">더보기</button>
+
+  <!-- 회원 제보 목록 -->
+  <div class="grant-tip-section-title">&#128226; 회원 제보 공고</div>
+  <div id="grantTipList"><div class="loading">불러오는 중...</div></div>
+
+  <!-- 제보 폼 -->
+  <div class="tip-form-wrap">
+    <div class="form-title">&#128161; 지원사업 제보하기</div>
+    <div class="form-desc">자동 수집에서 빠진 공고를 공유해 주세요. 네트워크 전체가 함께 볼 수 있습니다.</div>
+    <form id="grantTipForm" onsubmit="submitGrantTip(event)">
+      <div class="form-row">
+        <label class="form-label">사업명 <span style="color:#c0392b;">*</span></label>
+        <input class="form-input" id="gt-bizname" type="text" placeholder="예) 2026 사회적경제 디지털전환 지원사업" required>
+      </div>
+      <div class="form-row">
+        <label class="form-label">공고 사이트 링크</label>
+        <input class="form-input" id="gt-link" type="url" placeholder="https://">
+      </div>
+      <div class="form-row">
+        <label class="form-label">주관기관</label>
+        <input class="form-input" id="gt-org" type="text" placeholder="예) 한국사회적기업진흥원">
+      </div>
+      <div class="form-row">
+        <label class="form-label">마감일</label>
+        <input class="form-input" id="gt-deadline" type="text" placeholder="예) 2026-07-31 또는 상시모집">
+      </div>
+      <div class="form-row">
+        <label class="form-label">설명</label>
+        <textarea class="form-input" id="gt-note" rows="2" placeholder="간단히 설명해 주세요"></textarea>
+      </div>
+      <div class="form-row">
+        <label class="form-label">제보자 / 조합명</label>
+        <input class="form-input" id="gt-reporter" type="text" placeholder="예) 홍길동 / OO로컬푸드협동조합 (생략 가능)">
+      </div>
+      <div id="grantTipMsg" class="join-msg" style="margin-top:8px;"></div>
+      <button id="grantTipBtn" type="submit" class="submit-btn" style="margin-top:12px;">제보 등록</button>
+    </form>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TAB 6: 자료실 -->
 <!-- ═══════════════════════════════════════ -->
 <div id="tab-resources" class="tab-content">
 <div class="card-container">
@@ -1250,6 +1366,7 @@ function showTab(id, el) {
   document.querySelector('.tab-links').classList.remove('open');
   window.scrollTo(0, 0);
   if (id === 'members') loadMembers();
+  if (id === 'grants') loadGrants();
   if (id === 'suggest') loadSuggestions();
 }
 
@@ -1331,6 +1448,232 @@ async function loadMembers() {
   } catch (err) {
     container.innerHTML = '<p style="color:#c0392b;">데이터를 불러올 수 없습니다.</p>';
   }
+}
+
+// ── 전국 지원사업 페이지네이션 상태 ──
+const GRANTS_PAGE_SIZE = 15;
+let grantsOffset = 0;
+let grantsLoading = false;
+
+function getAuthorType(author) {
+  if (!author) return 'unknown';
+  const centralPatterns = ['부', '청', '처', '위원회', '원', '본부', '공단', '진흥원'];
+  const localPatterns = ['특별시', '광역시', '특별자치', '도청', '도 ', '시청', '시 ', '군청', '군 ', '구청', '구 '];
+  for (const kw of localPatterns) {
+    if (author.includes(kw)) return 'local';
+  }
+  for (const kw of centralPatterns) {
+    if (author.endsWith(kw) || author.includes(kw)) return 'central';
+  }
+  return 'local';
+}
+
+function buildGrantCard(g) {
+  const author = g.author || '미상';
+  const authorType = getAuthorType(author);
+  const badgeClass = authorType === 'central' ? 'grant-badge-central' : 'grant-badge-local';
+  const badgeLabel = authorType === 'central' ? '중앙부처' : '지자체';
+  let html = '<div class="grant-card">';
+  html += '<div class="grant-title">' + esc(g.title) + '</div>';
+  html += '<div class="grant-meta">';
+  html += '<span class="grant-badge ' + badgeClass + '">' + badgeLabel + '</span>';
+  html += '<span>&#127962; ' + esc(author) + '</span>';
+  if (g.end_date) html += '<span>&#128197; ~' + esc(g.end_date) + '</span>';
+  html += '</div>';
+  if (g.link) html += '<a href="' + esc(g.link) + '" target="_blank" rel="noopener noreferrer" class="grant-link">&#128279; 공고 보기</a>';
+  html += '</div>';
+  return html;
+}
+
+async function loadGrants() {
+  // 초기화: 탭 진입 시 리셋
+  grantsOffset = 0;
+  const container = document.getElementById('grantList');
+  const countEl = document.getElementById('grantCount');
+  const moreBtn = document.getElementById('loadMoreBtn');
+  container.innerHTML = '<div class="loading">불러오는 중...</div>';
+  if (moreBtn) moreBtn.style.display = 'none';
+
+  await _fetchGrants(true);
+  loadGrantTips();
+}
+
+async function _fetchGrants(isFirst) {
+  if (grantsLoading) return;
+  grantsLoading = true;
+
+  const container = document.getElementById('grantList');
+  const countEl = document.getElementById('grantCount');
+  const moreBtn = document.getElementById('loadMoreBtn');
+
+  if (!isFirst) {
+    if (moreBtn) { moreBtn.disabled = true; moreBtn.textContent = '불러오는 중...'; }
+  }
+
+  try {
+    const url = SUPABASE_URL + '/rest/v1/bizinfo_grants'
+      + '?select=title,author,end_date,link,fetched_at,posted_date'
+      + '&order=posted_date.desc.nullslast,fetched_at.desc,id.desc'
+      + '&limit=' + GRANTS_PAGE_SIZE
+      + '&offset=' + grantsOffset;
+
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'count=exact'
+      }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    // 총건수
+    const contentRange = res.headers.get('Content-Range');
+    let totalCount = null;
+    if (contentRange) {
+      const m = contentRange.match(/\/(\d+)$/);
+      if (m) totalCount = parseInt(m[1], 10);
+    }
+
+    const data = await res.json();
+
+    if (isFirst) {
+      if (!Array.isArray(data) || data.length === 0) {
+        countEl.textContent = '';
+        container.innerHTML = '<p style="color:var(--gray);">현재 조회된 지원사업이 없습니다.</p>';
+        grantsLoading = false;
+        return;
+      }
+      // 최신 fetch 날짜
+      const latestFetch = data[0].fetched_at
+        ? new Date(data[0].fetched_at).toLocaleDateString('ko-KR')
+        : '-';
+      countEl.textContent = (totalCount ? '총 ' + totalCount + '건' : '') + ' (최종 조사: ' + latestFetch + ')';
+      let html = '<div class="grant-list">';
+      data.forEach(g => { html += buildGrantCard(g); });
+      html += '</div>';
+      container.innerHTML = html;
+    } else {
+      // 누적 append
+      let list = container.querySelector('.grant-list');
+      if (!list) {
+        list = document.createElement('div');
+        list.className = 'grant-list';
+        container.appendChild(list);
+      }
+      data.forEach(g => { list.innerHTML += buildGrantCard(g); });
+    }
+
+    grantsOffset += data.length;
+
+    // 더보기 버튼 상태
+    const hasMore = data.length === GRANTS_PAGE_SIZE;
+    if (moreBtn) {
+      moreBtn.style.display = hasMore ? 'block' : 'none';
+      moreBtn.disabled = false;
+      moreBtn.textContent = '더보기';
+    }
+
+  } catch (err) {
+    if (isFirst) {
+      countEl.textContent = '';
+      container.innerHTML = '<p style="color:#c0392b;">지원사업 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</p>';
+    }
+  }
+  grantsLoading = false;
+}
+
+async function loadMoreGrants() {
+  await _fetchGrants(false);
+}
+
+// ── 제보 목록 로드 ──
+async function loadGrantTips() {
+  const container = document.getElementById('grantTipList');
+  if (!container) return;
+  container.innerHTML = '<div class="loading">불러오는 중...</div>';
+  try {
+    const res = await fetch(
+      SUPABASE_URL + '/rest/v1/foodnet_grant_tips?select=biz_name,link,org,deadline,note,reporter,created_at&order=created_at.desc',
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY } }
+    );
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const items = await res.json();
+    if (!Array.isArray(items) || items.length === 0) {
+      container.innerHTML = '<p style="color:var(--gray);font-size:0.85rem;">아직 제보된 공고가 없습니다. 아래 폼으로 첫 번째 제보를 남겨주세요!</p>';
+      return;
+    }
+    let html = '<div class="grant-list">';
+    items.forEach(t => {
+      html += '<div class="grant-card">';
+      html += '<div class="grant-title">' + esc(t.biz_name) + '</div>';
+      html += '<div class="grant-meta">';
+      html += '<span class="grant-badge grant-badge-tip">회원 제보</span>';
+      if (t.org) html += '<span>&#127962; ' + esc(t.org) + '</span>';
+      if (t.deadline) html += '<span>&#128197; ~' + esc(t.deadline) + '</span>';
+      if (t.reporter) html += '<span>&#128100; ' + esc(t.reporter) + '</span>';
+      html += '</div>';
+      if (t.note) html += '<div style="font-size:0.82rem;color:var(--gray);margin-top:6px;">' + esc(t.note) + '</div>';
+      if (t.link) html += '<a href="' + esc(t.link) + '" target="_blank" rel="noopener noreferrer" class="grant-link">&#128279; 공고 보기</a>';
+      html += '</div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  } catch (err) {
+    container.innerHTML = '<p style="color:#c0392b;">제보 목록을 불러올 수 없습니다.</p>';
+  }
+}
+
+// ── 제보 제출 ──
+async function submitGrantTip(e) {
+  e.preventDefault();
+  const btn = document.getElementById('grantTipBtn');
+  const msg = document.getElementById('grantTipMsg');
+
+  const bizName = document.getElementById('gt-bizname').value.trim();
+  if (!bizName) {
+    msg.className = 'join-msg error';
+    msg.textContent = '사업명은 필수입니다.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+  msg.textContent = '';
+
+  const data = {
+    biz_name: bizName,
+    link: document.getElementById('gt-link').value.trim() || null,
+    org: document.getElementById('gt-org').value.trim() || null,
+    deadline: document.getElementById('gt-deadline').value.trim() || null,
+    note: document.getElementById('gt-note').value.trim() || null,
+    reporter: document.getElementById('gt-reporter').value.trim() || null
+  };
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/foodnet_grant_tips', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      msg.className = 'join-msg success';
+      msg.textContent = '제보가 등록되었습니다. 감사합니다!';
+      document.getElementById('grantTipForm').reset();
+      loadGrantTips();
+    } else {
+      throw new Error('서버 오류 ' + res.status);
+    }
+  } catch (err) {
+    msg.className = 'join-msg error';
+    msg.textContent = '전송 실패. 잠시 후 다시 시도해주세요.';
+  }
+  btn.disabled = false;
+  btn.textContent = '제보 등록';
 }
 
 async function submitSuggest(e) {
