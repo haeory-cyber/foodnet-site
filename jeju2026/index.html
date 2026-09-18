@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 제주 조직발전전략 워크숍 | 로컬푸드협동조합 전국네트워크</title>
+<meta name="description" content="로컬푸드협동조합 전국네트워크 2026 제주 조직발전전략 워크숍 — 2026. 10. 13.(화)~10. 14.(수), 제주 애월 유니호텔">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fdfaf3;
+  --paper-2:#ffffff;
+  --paper-3:#f5f0e4;
+  --paper-4:#efe8d8;
+  --ink:#15191b;
+  --ink-2:#485257;
+  --ink-3:#5f696e;
+  --line:rgba(21,25,27,.13);
+  --line-2:rgba(21,25,27,.22);
+  --tangerine:#e2590b;
+  --tangerine-ink:#b34708;
+  --tangerine-soft:#fdeadb;
+  --sea:#0d7d6e;
+  --sea-ink:#0a6357;
+  --sea-soft:#e2f2ef;
+  --sun:#f3b229;
+  --basalt:#2b3237;
+  --pad:clamp(20px,4.5vw,72px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Gothic A1','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-weight:400;font-size:17px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.display{font-family:'Black Han Sans','Gothic A1','Apple SD Gothic Neo',sans-serif;font-weight:400;letter-spacing:-.01em;line-height:1.1}
+.skip{position:absolute;left:-9999px;top:0;background:var(--tangerine);color:#fff;padding:12px 20px;font-weight:700;z-index:1000}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--tangerine);outline-offset:3px;border-radius:2px}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100svh;padding:var(--pad);
+  display:grid;grid-template-rows:auto 1fr auto;gap:clamp(16px,2.4vw,26px);
+  border-bottom:2px solid var(--ink);overflow:hidden;
+  background:
+    radial-gradient(85% 65% at 8% -8%, rgba(243,178,41,.30), transparent 62%),
+    radial-gradient(70% 62% at 100% 10%, rgba(13,125,110,.16), transparent 64%),
+    radial-gradient(60% 55% at 78% 108%, rgba(226,89,11,.14), transparent 62%),
+    var(--paper);
+}
+.hero::after{
+  content:"";position:absolute;left:-6%;right:-6%;bottom:-2px;height:34vh;z-index:0;
+  background:linear-gradient(to top, rgba(13,125,110,.26), rgba(13,125,110,.06));
+  clip-path:polygon(0 100%,0 74%,9% 68%,18% 72%,27% 60%,34% 63%,42% 44%,50% 30%,58% 45%,66% 62%,74% 57%,83% 70%,92% 65%,100% 73%,100% 100%);
+}
+.hero>*{position:relative;z-index:2}
+.brandrow{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;justify-content:space-between;font-size:14px;color:var(--ink-2)}
+.brandrow b{color:var(--ink);font-weight:900;letter-spacing:.02em;font-size:15.5px}
+.tagchip{border:1px solid var(--line-2);border-radius:999px;padding:6px 16px;font-size:13px;color:var(--sea-ink);background:rgba(255,255,255,.72);font-weight:500}
+.heroMain{display:grid;align-content:center;gap:clamp(14px,2vw,26px)}
+.kicker{margin:0;font-size:clamp(14px,1.5vw,18px);letter-spacing:.3em;color:var(--tangerine-ink);font-weight:700}
+h1.title{margin:0;font-size:clamp(44px,min(8.6vw,10.6svh),150px)}
+.title span{display:block}
+.title .l1{color:var(--ink)}
+.title .l2{color:var(--tangerine)}
+.title .l3{color:var(--sea)}
+.sub{margin:0;max-width:62ch;font-size:clamp(16.5px,1.35vw,20px);color:var(--ink-2);line-height:1.72}
+.sub strong{color:var(--ink);font-weight:900}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line-2);
+  border:1px solid var(--line-2);margin:0}
+.fact{background:rgba(255,255,255,.86);padding:18px 20px}
+.fact dt{font-size:12.5px;letter-spacing:.18em;color:var(--ink-3);margin:0 0 6px;font-weight:500}
+.fact dd{margin:0;font-size:clamp(17px,1.5vw,21px);font-weight:900;color:var(--ink);line-height:1.35}
+.fact dd span{display:block;font-size:14px;font-weight:400;color:var(--ink-2);margin-top:3px}
+
+/* ===== notice ===== */
+.notice{display:flex;gap:12px;align-items:flex-start;background:var(--tangerine-soft);
+  border:1px solid rgba(226,89,11,.32);border-left:5px solid var(--tangerine);
+  padding:14px 20px;font-size:15.5px;color:#7a3206;font-weight:500;line-height:1.6}
+.notice svg{flex:0 0 auto;margin-top:2px}
+
+/* ===== section frame ===== */
+section{padding:clamp(56px,7vw,112px) var(--pad);border-bottom:1px solid var(--line)}
+section.band{background:var(--paper-3)}
+.secHead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;margin-bottom:clamp(26px,3.6vw,50px)}
+.secNum{font-family:'Black Han Sans',sans-serif;font-size:clamp(34px,5vw,64px);color:var(--tangerine);line-height:1}
+.secTitle{font-family:'Black Han Sans',sans-serif;font-size:clamp(26px,3.6vw,50px);margin:0;line-height:1.14;color:var(--ink)}
+.secNote{margin-left:auto;font-size:14.5px;color:var(--ink-3);max-width:40ch}
+
+/* ===== purpose ===== */
+.thesis{border-left:5px solid var(--sea);padding:4px 0 4px 26px;margin:0 0 clamp(28px,4vw,50px);
+  font-family:'Black Han Sans',sans-serif;font-size:clamp(21px,3vw,40px);line-height:1.38;color:var(--ink)}
+.thesis em{font-style:normal;color:var(--sea)}
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.goal{background:var(--paper-2);padding:clamp(22px,2.4vw,32px);transition:transform .25s ease,box-shadow .25s ease}
+.goal:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(21,25,27,.09)}
+.goal .n{font-family:'Black Han Sans',sans-serif;font-size:40px;color:var(--tangerine);opacity:.85;line-height:1}
+.goal h3{margin:8px 0 10px;font-size:20px;font-weight:900;color:var(--ink)}
+.goal p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.74}
+.flow{margin:clamp(24px,3vw,40px) 0 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:15px;color:var(--ink-2)}
+.flow span{border:1px solid var(--line-2);border-radius:999px;padding:8px 16px;background:var(--sea-soft)}
+.flow i{font-style:normal;color:var(--tangerine-ink);font-weight:700}
+
+/* ===== schedule ===== */
+.dayhead{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:clamp(28px,4vw,46px) 0 16px;
+  padding-bottom:14px;border-bottom:3px solid var(--tangerine)}
+.daybadge{font-family:'Black Han Sans',sans-serif;background:var(--tangerine);color:#fff;padding:6px 18px;font-size:clamp(18px,2vw,26px);line-height:1.3}
+.dayhead h3{margin:0;font-size:clamp(18px,2vw,26px);font-weight:900;color:var(--ink)}
+.daydate{font-size:15px;color:var(--ink-3);letter-spacing:.04em}
+.dayhead.sea{border-bottom-color:var(--sea)}
+.dayhead.sea .daybadge{background:var(--sea);color:#fff}
+.revised{margin-left:auto;font-size:13px;letter-spacing:.06em;color:var(--tangerine-ink);font-weight:700;
+  border:1px dashed var(--tangerine);border-radius:999px;padding:5px 14px;background:var(--tangerine-soft)}
+.tw{width:100%;overflow-x:auto;background:var(--paper-2);border:1px solid var(--line-2)}
+table.sched{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+table.sched caption{text-align:left;font-size:14px;color:var(--ink-3);padding:14px 20px 0}
+table.sched th{text-align:left;font-size:12.5px;letter-spacing:.14em;color:var(--ink-3);font-weight:500;
+  padding:14px 18px;border-bottom:2px solid var(--line-2);white-space:nowrap}
+table.sched td{padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.sched tbody tr:last-child td{border-bottom:0}
+table.sched tbody tr:hover td{background:#fff9ef}
+.t-time{font-variant-numeric:tabular-nums;font-weight:900;white-space:nowrap;color:var(--tangerine-ink);width:1%}
+.t-prog{font-weight:900;color:var(--ink);min-width:12ch}
+.t-prog .who{display:inline-block;margin-left:8px;font-size:13px;font-weight:700;color:#fff;background:var(--sea);padding:2px 11px;border-radius:999px;vertical-align:middle}
+.t-desc{color:var(--ink-2);font-size:15.5px}
+tr.meal td{background:var(--paper-3)}
+tr.meal .t-prog{color:var(--ink-2);font-weight:500}
+tr.meal .t-time{color:var(--ink-3)}
+tr.key .t-prog{color:var(--sea-ink)}
+.host{margin:20px 0 0;font-size:15.5px;color:var(--ink-2)}
+.host b{color:var(--ink);font-weight:900}
+
+/* ===== prep ===== */
+.prepgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.prep{background:var(--paper-2);padding:20px 22px}
+.prep .no{margin:0;font-size:12px;letter-spacing:.18em;color:var(--tangerine-ink);font-weight:900}
+.prep h4{margin:6px 0 6px;font-size:17px;font-weight:900;color:var(--ink)}
+.prep p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.66}
+
+/* ===== programs ===== */
+.progs{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.prog{background:var(--paper-2);padding:clamp(22px,2.4vw,32px);border-top:4px solid var(--tangerine)}
+.prog:nth-child(2){border-top-color:var(--sea)}
+.prog:nth-child(3){border-top-color:var(--sun)}
+.prog:nth-child(4){border-top-color:var(--basalt)}
+.prog .tag{margin:0;font-size:12px;letter-spacing:.18em;color:var(--ink-3);font-weight:500}
+.prog h3{margin:8px 0 10px;font-size:19px;font-weight:900;color:var(--ink)}
+.prog p{margin:0;font-size:15px;color:var(--ink-2);line-height:1.74}
+
+/* ===== logistics ===== */
+.logi{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,44px)}
+.logi h3{font-family:'Black Han Sans',sans-serif;font-size:22px;margin:0 0 12px;color:var(--ink)}
+.logi ul{margin:0;padding:0;list-style:none}
+.logi li{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
+.logi li b{min-width:9ch;color:var(--ink-3);font-weight:500;font-size:14px;letter-spacing:.04em;padding-top:2px}
+.logi li span{color:var(--ink-2)}
+.callout{margin:26px 0 0;border:1px solid var(--line-2);border-left:5px solid var(--sea);padding:18px 22px;
+  font-size:15.5px;color:var(--ink-2);background:var(--sea-soft)}
+.callout strong{color:var(--ink)}
+
+/* ===== outcomes ===== */
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.outc{background:var(--paper-2);padding:24px;position:relative;overflow:hidden}
+.outc .big{position:absolute;right:8px;bottom:-18px;font-family:'Black Han Sans',sans-serif;font-size:80px;color:rgba(21,25,27,.055);line-height:1}
+.outc h4{margin:0 0 8px;font-size:17px;font-weight:900;color:var(--sea-ink);position:relative}
+.outc p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.68;position:relative}
+
+/* ===== footer ===== */
+footer{padding:clamp(48px,6vw,88px) var(--pad);background:var(--basalt);color:#f3efe6}
+.foot{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-end}
+.foot .big{font-family:'Black Han Sans',sans-serif;font-size:clamp(26px,4.6vw,60px);line-height:1.14;margin:0;color:#fff}
+.foot .big em{font-style:normal;color:#ffa759}
+.foot .meta{margin:0;font-size:14px;color:#c3cbcf;line-height:1.9;text-align:right}
+.foot .meta b{color:#fff;font-weight:700}
+.footnote{margin:26px 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);font-size:14px;color:#c3cbcf}
+
+@media (max-height:860px) and (min-width:641px){ .hero{padding-top:30px;padding-bottom:30px} }
+@media (max-height:800px) and (min-width:641px){
+  .hero{padding-top:22px;padding-bottom:22px}
+  h1.title{font-size:min(8.6vw,9.3svh)}
+  .sub{font-size:16.5px;max-width:76ch;line-height:1.6}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .secNote{margin-left:0}
+  table.sched{font-size:15px}
+  .logi li{flex-direction:column;gap:4px}
+  .logi li b{min-width:0}
+  .foot .meta{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
+@media print{
+  body{background:#fff}
+  body::before,.hero::after{display:none}
+  .hero{min-height:auto;background:#fff}
+  section,footer{page-break-inside:avoid}
+  footer{background:#fff;color:#111}
+  .foot .big,.foot .meta b{color:#111}.foot .big em{color:#b34708}.foot .meta,.footnote{color:#444}
+  table.sched{min-width:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="hero">
+  <div class="brandrow">
+    <span><b>로컬푸드협동조합 전국네트워크</b></span>
+    <span class="tagchip">조직발전전략 · 지역사회 협동운동 · 로컬푸드 사업연대</span>
+  </div>
+
+  <div class="heroMain">
+    <p class="kicker">2026 제주 · 1박 2일</p>
+    <h1 class="title display">
+      <span class="l1">조직발전전략</span>
+      <span class="l2">워크숍</span>
+      <span class="l3">제주</span>
+    </h1>
+    <p class="sub">전국네트워크의 법인화와 <strong>연합회 출범</strong>을 앞두고, 연합회가 맡을 역할과 회원조직 간 공동사업의 방향을 함께 정합니다. 지역사회 협동운동의 가치 위에서 <strong>로컬푸드 사업연대</strong>를 어떻게 넓힐 것인가 — 이틀의 질문입니다.</p>
+  </div>
+
+  <dl class="facts">
+    <div class="fact"><dt>일시</dt><dd>10월 13일 ~ 14일<span>2026년 · 화~수 1박 2일</span></dd></div>
+    <div class="fact"><dt>집결</dt><dd>10월 13일 오전 10시<span>제주국제공항</span></dd></div>
+    <div class="fact"><dt>장소</dt><dd>애월 유니호텔<span>제주특별자치도 일원</span></dd></div>
+    <div class="fact"><dt>참가규모</dt><dd>최대 50명<span>조직별 3~4명 배정</span></dd></div>
+    <div class="fact"><dt>전체 진행</dt><dd>소희주<span>진주우리먹거리협동조합</span></dd></div>
+  </dl>
+</header>
+
+<main id="main">
+
+<section aria-labelledby="s1">
+  <div class="secHead">
+    <span class="secNum">01</span>
+    <h2 class="secTitle" id="s1">무엇을 하러 모이는가</h2>
+    <p class="secNote">기초자료 — 전국네트워크 2026년 3차 전체모임 결과(2026. 8. 25.)</p>
+  </div>
+
+  <p class="thesis display">지역사회 협동운동의 가치를 기반으로,<br><em>로컬푸드 사업연대</em>를 어떻게 확장할 것인가</p>
+
+  <div class="goals">
+    <article class="goal">
+      <p class="n">01</p>
+      <h3>연합회의 정체성과 역할 정립</h3>
+      <p>협동조합 연합회의 전통적 기능과 국내외 사례를 학습하고, 전국네트워크가 지향할 조직적·사회적 역할을 구체화합니다.</p>
+    </article>
+    <article class="goal">
+      <p class="n">02</p>
+      <h3>회원조직의 요구 확인</h3>
+      <p>회원사가 연합회에 기대하는 역할과, 개별 조직만으로는 풀기 어려운 공동과제를 발굴합니다.</p>
+    </article>
+    <article class="goal">
+      <p class="n">03</p>
+      <h3>실질적인 사업연대 구축</h3>
+      <p>지역별 물품·물류·판로·시설·전문인력을 공유하고 공동물류·공동판매·공동기획전의 가능성을 논의합니다.</p>
+    </article>
+    <article class="goal">
+      <p class="n">04</p>
+      <h3>2027년 공동사업 발굴</h3>
+      <p>조직발전전략과 사업전략을 통합해, 연합회 출범 이후 추진할 공동사업을 구체화합니다.</p>
+    </article>
+  </div>
+
+  <p class="flow">
+    <span>협동조합의 가치와 정체성</span><i>→</i>
+    <span>연합회의 역할</span><i>→</i>
+    <span>회원조직의 필요</span><i>→</i>
+    <span>자원·물품·물류·판로 연계</span><i>→</i>
+    <span>2027 공동사업</span>
+  </p>
+</section>
+
+<section class="band" aria-labelledby="s2">
+  <div class="secHead">
+    <span class="secNum">02</span>
+    <h2 class="secTitle" id="s2">세부 일정</h2>
+  </div>
+
+  <p class="notice">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12.01" y2="16.5"/></svg>
+    <span>일부 일정과 프로그램은 변경될 수 있습니다. 귀가 항공편 조사 결과에 따라 2일차 후반 일정과 식사시간은 최종 조정합니다.</span>
+  </p>
+
+  <div class="dayhead">
+    <span class="daybadge">제1일</span>
+    <h3>연합회의 역할과 조직발전전략</h3>
+    <span class="daydate">10월 13일 (화)</span>
+    <span class="revised">일정 조정본</span>
+  </div>
+  <div class="tw">
+  <table class="sched">
+    <caption>제1일 — 10월 13일(화) 「연합회의 역할과 조직발전전략」</caption>
+    <thead><tr><th scope="col">시간</th><th scope="col">프로그램</th><th scope="col">주요 내용</th></tr></thead>
+    <tbody>
+      <tr><td class="t-time">10:00</td><td class="t-prog">제주공항 집결</td><td class="t-desc">참가자 확인 및 안내</td></tr>
+      <tr><td class="t-time">10:00~11:00</td><td class="t-prog">애월 이동 · 호텔 도착</td><td class="t-desc">전세버스 + 렌터카 / 짐 보관·등록</td></tr>
+      <tr class="key"><td class="t-time">11:00~12:30</td><td class="t-prog">환영인사 · 참여조직 자기소개</td><td class="t-desc">개회와 일정 공유에 이어, 참여조직이 각자 자기 조직을 소개합니다</td></tr>
+      <tr class="meal"><td class="t-time">12:30~14:00</td><td class="t-prog">점심식사</td><td class="t-desc">제주 향토식</td></tr>
+      <tr class="key"><td class="t-time">14:00~16:00</td><td class="t-prog">주제강의<span class="who">김신양</span></td><td class="t-desc">「협동조합 연합회의 전통적 역할과 기본사업」 — 이탈리아 등 해외 사례</td></tr>
+      <tr class="key"><td class="t-time">16:00~17:00</td><td class="t-prog">연합회 설립 안내<span class="who">유길의</span></td><td class="t-desc">법인화와 연합회 출범 절차 안내</td></tr>
+      <tr class="key"><td class="t-time">17:00~18:00</td><td class="t-prog">연합회, 무엇을 할 것인가<span class="who">김성훈</span></td><td class="t-desc">연합회가 해줬으면 하는 일·필요로 하는 일·기대하는 것</td></tr>
+      <tr class="meal"><td class="t-time">18:00~19:00</td><td class="t-prog">저녁식사</td><td class="t-desc">제주 향토식</td></tr>
+      <tr><td class="t-time">19:00~20:00</td><td class="t-prog">전체회의</td><td class="t-desc">공동과제와 연합회 역할 우선순위 정리</td></tr>
+      <tr><td class="t-time">20:00~</td><td class="t-prog">뒤풀이</td><td class="t-desc">회원조직 네트워킹 및 숙박</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="host">전체 진행 <b>소희주</b> · 강의 <b>김신양</b> · 연합회 설립 안내 <b>유길의</b> · 워크숍 <b>김성훈</b></p>
+
+  <div class="dayhead sea">
+    <span class="daybadge">제2일</span>
+    <h3>제주의 역사·로컬푸드 현장에서 공동사업을 찾다</h3>
+    <span class="daydate">10월 14일 (수)</span>
+  </div>
+  <div class="tw">
+  <table class="sched">
+    <caption>제2일 — 10월 14일(수) 「제주의 역사·로컬푸드 현장에서 공동사업을 찾다」</caption>
+    <thead><tr><th scope="col">시간</th><th scope="col">프로그램</th><th scope="col">주요 내용</th></tr></thead>
+    <tbody>
+      <tr class="meal"><td class="t-time">07:30~08:30</td><td class="t-prog">조식</td><td class="t-desc">유니호텔</td></tr>
+      <tr><td class="t-time">08:30~09:00</td><td class="t-prog">체크아웃</td><td class="t-desc">출발 준비</td></tr>
+      <tr class="key"><td class="t-time">09:00~11:30</td><td class="t-prog">제주의 역사발자취 또는 생태관광</td><td class="t-desc">제주 역사·공동체 현장기행 또는 생태관광 / 세부코스 별도 확정</td></tr>
+      <tr><td class="t-time">11:30~12:00</td><td class="t-prog">이동</td><td class="t-desc">전세버스 + 렌터카</td></tr>
+      <tr class="meal"><td class="t-time">12:00~13:00</td><td class="t-prog">점심식사</td><td class="t-desc">제주 향토식</td></tr>
+      <tr class="key"><td class="t-time">13:00~14:30</td><td class="t-prog">제주 로컬푸드 현장견학</td><td class="t-desc">밥상살림·담을센터 운영현장 견학</td></tr>
+      <tr class="key"><td class="t-time">14:30~15:30</td><td class="t-prog">사업교류 현장워크숍</td><td class="t-desc">지역별 교류상품·물류·판로·공동기획전 가능성 논의</td></tr>
+      <tr><td class="t-time">15:30~16:20</td><td class="t-prog">제주 현장기행 · 이동</td><td class="t-desc">항공편 및 현장 상황에 따라 조정</td></tr>
+      <tr class="meal"><td class="t-time">16:30~17:30</td><td class="t-prog">식사</td><td class="t-desc">제주 향토식</td></tr>
+      <tr><td class="t-time">17:30~18:20</td><td class="t-prog">제주공항 이동</td><td class="t-desc">전세버스 + 렌터카</td></tr>
+      <tr><td class="t-time">18:20 이후</td><td class="t-prog">해산</td><td class="t-desc">참가자별 항공편 이용</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section aria-labelledby="s3">
+  <div class="secHead">
+    <span class="secNum">03</span>
+    <h2 class="secTitle" id="s3">핵심 프로그램</h2>
+  </div>
+  <div class="progs">
+    <article class="prog">
+      <p class="tag">교육 1 · 주제강의</p>
+      <h3>김신양 — 협동조합 연합회의 전통적 역할과 기본사업</h3>
+      <p>이탈리아 등 해외 사례를 통해 연합회의 정체성과 기본 기능을 이해합니다.</p>
+    </article>
+    <article class="prog">
+      <p class="tag">교육 2 · 조직발전전략 워크숍</p>
+      <h3>김성훈 — 연합회, 무엇을 할 것인가</h3>
+      <p>“연합회가 해줬으면 하는 일·필요로 하는 일·기대하는 것”을 중심으로 회원조직의 요구와 공동과제를 도출합니다.</p>
+    </article>
+    <article class="prog">
+      <p class="tag">교육 3 · 현장기행</p>
+      <h3>제주의 역사발자취</h3>
+      <p>제주의 역사와 지역공동체 현장을 통해 지역성과 공동체의 의미를 현장에서 살펴봅니다.</p>
+    </article>
+    <article class="prog">
+      <p class="tag">현장교류</p>
+      <h3>밥상살림 · 담을센터</h3>
+      <p>제주 로컬푸드 유통·매장 운영 현장을 확인하고, 지역 간 교류상품·물류·판로 연계 가능성을 논의합니다.</p>
+    </article>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="s4">
+  <div class="secHead">
+    <span class="secNum">04</span>
+    <h2 class="secTitle" id="s4">회원조직 사전 준비자료</h2>
+    <p class="secNote">10월 초까지 조직별 PPT 및 사업교류 자료를 제출합니다.</p>
+  </div>
+  <div class="prepgrid">
+    <div class="prep"><p class="no">01</p><h4>조직 소개</h4><p>설립목적, 지역, 주요 활동</p></div>
+    <div class="prep"><p class="no">02</p><h4>핵심사업</h4><p>직매장·급식·유통·가공·공동체사업 등</p></div>
+    <div class="prep"><p class="no">03</p><h4>대표상품</h4><p>해당 지역을 대표하는 주요 상품</p></div>
+    <div class="prep"><p class="no">04</p><h4>교류 가능상품</h4><p>다른 회원조직에 공급 가능한 상품</p></div>
+    <div class="prep"><p class="no">05</p><h4>필요상품</h4><p>타지역에서 공급받고 싶은 상품</p></div>
+    <div class="prep"><p class="no">06</p><h4>물류자원</h4><p>차량·냉장냉동·물류센터·공동배송 등</p></div>
+    <div class="prep"><p class="no">07</p><h4>판매자원</h4><p>직매장·온라인·공공급식·학교급식 등</p></div>
+    <div class="prep"><p class="no">08</p><h4>조직의 강점</h4><p>다른 조직과 공유 가능한 노하우</p></div>
+    <div class="prep"><p class="no">09</p><h4>연합회 요구사항</h4><p>연합회가 공동으로 해결해주기를 원하는 과제</p></div>
+    <div class="prep"><p class="no">10</p><h4>2027 공동사업</h4><p>함께 추진하고 싶은 사업</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="s5">
+  <div class="secHead">
+    <span class="secNum">05</span>
+    <h2 class="secTitle" id="s5">숙박 · 교통 안내</h2>
+  </div>
+  <div class="logi">
+    <div>
+      <h3>숙박 — 애월 유니호텔</h3>
+      <ul>
+        <li><b>객실</b><span>오션뷰 스위트 12실 (48명)</span></li>
+        <li><b>객실</b><span>스탠다드 트윈 1실 (2명)</span></li>
+        <li><b>합계</b><span>13실 / 50명 / 1박</span></li>
+        <li><b>배정</b><span>10월 초 조직별 객실·차량 배정</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>현지교통</h3>
+      <ul>
+        <li><b>전세버스</b><span>45인승 1대 × 2일 — 제주공항·호텔·현장기행·제주공항</span></li>
+        <li><b>렌터카</b><span>7~9인승 1대 × 2일 — 초과 참가자 및 운영진 이동</span></li>
+        <li><b>항공</b><span>제주 왕복 항공료 등 개별 교통비는 참가자 자부담</span></li>
+        <li><b>확인</b><span>10월 10일 전후 최종 참가자 및 항공편 확인</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="callout">집결은 <strong>10월 13일(화) 오전 10시, 제주국제공항</strong>입니다. 항공편은 집결 시간에 맞추어 예약해 주시고, 귀가 항공편은 2일차 18:20 이후 해산 기준으로 잡아 주십시오.</p>
+</section>
+
+<section class="band" aria-labelledby="s6">
+  <div class="secHead">
+    <span class="secNum">06</span>
+    <h2 class="secTitle" id="s6">이틀 뒤에 남는 것</h2>
+    <p class="secNote">워크숍에서 도출할 핵심 결과물</p>
+  </div>
+  <div class="out">
+    <div class="outc"><span class="big" aria-hidden="true">01</span><h4>연합회 역할 우선순위</h4><p>정책·대외관계, 교육·조직지원, 공동구매·판매, 물류연대, 정보공유, 공동사업 등</p></div>
+    <div class="outc"><span class="big" aria-hidden="true">02</span><h4>회원조직 자원맵</h4><p>지역별 생산품·매장·생산자·물류·시설·전문인력·교육자원</p></div>
+    <div class="outc"><span class="big" aria-hidden="true">03</span><h4>전국 교류 가능상품 목록</h4><p>지역상품을 회원조직 매장과 연결할 수 있는 품목 및 조건 정리</p></div>
+    <div class="outc"><span class="big" aria-hidden="true">04</span><h4>공동물류 실험과제</h4><p>회원조직 간 기존 물류자원과 신규 공동물류 가능성 검토</p></div>
+    <div class="outc"><span class="big" aria-hidden="true">05</span><h4>2027 공동사업 3~5개</h4><p>공동기획전, 지역 특산물 상호교류, 공동물류, 먹거리돌봄, 정책사업 등</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <p class="big display">지역에서 각자 해오던 일을,<br><em>전국에서 함께</em> 하는 일로.</p>
+    <p class="meta">
+      <b>로컬푸드협동조합 전국네트워크</b><br>
+      2026 제주 조직발전전략 워크숍<br>
+      2026. 10. 13.(화) ~ 10. 14.(수) · 애월 유니호텔<br>
+      전체 진행 소희주
+    </p>
+  </div>
+  <p class="footnote">※ 일부 일정과 프로그램은 변경될 수 있습니다. 최종 일정은 참가 조직에 별도 안내합니다.</p>
+</footer>
+
+</body>
+</html>
