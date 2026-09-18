@@ -1,0 +1,55 @@
+# foodnet-site — .gitignore
+#
+# 🔴 이 레포는 루트 전체가 그대로 웹 서빙된다.
+#    foodnet.poomasi.org = Cloudflare Worker `foodnet-site`
+#    (Workers Builds, haeory-cyber/foodnet-site master 자동배포)
+#    wrangler assets.directory = "."
+#
+#    따라서 **커밋된 파일 = 공개 URL**이다.
+#    git add -A 한 번이면 백업본·QA 산출물·내부 메모가
+#    https://foodnet.poomasi.org/<파일명> 으로 전부 열린다.
+#    공개돼도 되는 파일만 add 하라. 새 산출물 유형이 생기면 여기 먼저 추가.
+
+# ── 백업본 (과거 사이트 전문이 그대로 노출됨)
+*.bak
+*.bak_*
+index.html.bak_*
+*.orig
+*~
+
+# ── QA·검증 산출물 (스크린샷·리포트·트레이스)
+qa_artifacts/
+playwright-report/
+test-results/
+*.trace.zip
+
+# ── 에이전트·툴링 작업물 (worktree 포함 — .claude/worktrees/ 가 여기 들어간다)
+.claude/
+.vscode/
+.idea/
+
+# ── 비밀값·설정 (서빙되면 그대로 유출)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.wrangler/
+node_modules/
+
+# ── 아카이브·원본 자료 (실수로 루트에 떨어지는 것들)
+#    26-09-18 기준 자료실은 전부 외부 링크라 로컬 첨부가 없다.
+#    의도적으로 배포할 첨부가 생기면 files/ 를 만들어 `!files/` 예외를 추가하라.
+*.zip
+*.tar
+*.tar.gz
+*.hwp
+*.hwpx
+*.xlsx
+*.docx
+*.pptx
+
+# ── OS 잡파일
+.DS_Store
+Thumbs.db
+desktop.ini
